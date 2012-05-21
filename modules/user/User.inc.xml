@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="User" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+    <object class="User" table="user" extends="xPDOObject">
+        <field key="userId" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" index="pk"  generated="native" />
+        <field key="name" dbtype="varchar" precision="50" phptype="string" null="false" />
+        <field key="uname" dbtype="varchar" precision="25" phptype="string" null="false" index="unique" />
+        <field key="email" dbtype="varchar" precision="65" phptype="string" null="false" />
+        <field key="url" dbtype="varchar" precision="200" phptype="string" null="false" />
+        <field key="user_avatar_pref" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="user_regdate" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" index="unique" />
+        <field key="user_sig" dbtype="text" phptype="string" null="false" />
+        <field key="user_from" dbtype="varchar" precision="75" phptype="string" null="false" />
+        <field key="user_interests" dbtype="text" phptype="string" null="false" />
+        <field key="user_birthday" dbtype="varchar" precision="10" phptype="string" null="false" />
+        <field key="pass" dbtype="varchar" precision="35" phptype="string" null="false" />
+        <field key="passtemp" dbtype="varchar" precision="35" phptype="string" null="false" />
+        <field key="salt" dbtype="varchar" precision="35" phptype="string" null="false" />
+        <field key="posts" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="theme" dbtype="varchar" precision="75" phptype="string" null="false" />
+        <field key="last_login" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="user_viewemail" dbtype="enum" precision="'yes','no'" phptype="string" null="false" default="yes" />
+        <field key="user_canpn" dbtype="enum" precision="'yes','no'" phptype="string" null="false" default="yes" />
+        <field key="invisible" dbtype="enum" precision="'yes','no'" phptype="string" null="false" default="no" />
+        <field key="pntomail" dbtype="enum" precision="'yes','no'" phptype="string" null="false" default="yes" />
+        <field key="status" dbtype="tinyint" precision="3" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="user_lastonline" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" index="unique" />
+        <field key="user_lastonline_temp" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" index="unique" />
+        <field key="user_posts" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="user_lastpost" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" />
+        <field key="recieve_newsletter" dbtype="tinyint" precision="4" phptype="integer" null="false" default="1" />
+        <field key="usedefault_avatar" dbtype="smallint" precision="6" phptype="integer" null="false" default="1" />
+        <field key="user_avatar" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="country" dbtype="char" precision="2" phptype="string" null="false" default="DE" />
+        <field key="group_id_misc" dbtype="varchar" precision="100" phptype="string" null="true" index="unique" />
+        <field key="person" dbtype="enum" precision="'private','company'" phptype="string" null="false" default="private" />
+        <field key="phone" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="phone_mobile" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="fax" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="lastname" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="zip" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="street" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="title" dbtype="varchar" precision="20" phptype="string" null="false" />
+        <field key="show_public" dbtype="tinyint" precision="3" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="company" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="ustid" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="fsk18" dbtype="tinyint" precision="3" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="user_icq" dbtype="varchar" precision="30" phptype="string" null="false" />
+        <field key="user_aim" dbtype="varchar" precision="30" phptype="string" null="false" />
+        <field key="user_skype" dbtype="varchar" precision="30" phptype="string" null="false" />
+
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE" >
+            <column key="userId" length="" collation="A" null="false" />
+        </index>
+        <index alias="kpro_user_uname_Idx" name="kpro_user_uname_Idx" primary="false" unique="true" type="BTREE" >
+            <column key="uname" length="" collation="A" null="false" />
+        </index>
+        <index alias="kpro_user_userId_Idx" name="kpro_user_userId_Idx" primary="false" unique="true" type="BTREE" >
+            <column key="userId" length="" collation="A" null="false" />
+        </index>
+        <index alias="user_regdate" name="user_regdate" primary="false" unique="false" type="BTREE" >
+            <column key="user_regdate" length="" collation="A" null="false" />
+        </index>
+        <index alias="group_id_misc" name="group_id_misc" primary="false" unique="false" type="BTREE" >
+            <column key="group_id_misc" length="" collation="A" null="true" />
+        </index>
+        <index alias="user_lastonline" name="user_lastonline" primary="false" unique="false" type="BTREE" >
+            <column key="user_lastonline" length="" collation="A" null="true" />
+        </index>
+        <index alias="user_lastonline_temp" name="user_lastonline_temp" primary="false" unique="false" type="BTREE" >
+            <column key="user_lastonline_temp" length="" collation="A" null="true" />
+        </index>
+        <composite alias="UserRole" class="Userrole" local="userId" foreign="userId" cardinality="many" owner="local" />
+        <composite alias="UserOnline" class="Useronline" local="userId" foreign="userId" cardinality="one" owner="local" />
+    </object>
+    <object class="Usergroup" table="usergroup" extends="xPDOObject">
+        <field key="ugroup" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" index="pk"  generated="native" />
+        <field key="groupname_single" dbtype="varchar" precision="75" phptype="string" null="false" />
+        <field key="groupname" dbtype="varchar" precision="100" phptype="string" null="false" />
+        <field key="groupmaxpn" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="50" />
+        <field key="groupmaxsig" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="100" />
+        <field key="maxpnlength" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="1000" />
+        <field key="maxcommlength" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" default="500" />
+        <field key="maxpicdownload" dbtype="smallint" precision="5" attributes="unsigned" phptype="integer" null="false" default="5" />
+        <field key="avatar_size" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="15360" />
+        <field key="avatar_width" dbtype="int" precision="11" phptype="integer" null="false" default="120" />
+        <field key="avatar_height" dbtype="int" precision="11" phptype="integer" null="false" default="100" />
+        <field key="default_avatar" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <field key="set_default_avatar" dbtype="tinyint" precision="4" phptype="integer" null="false" default="0" />
+        <field key="maxlength_post" dbtype="int" precision="11" phptype="integer" null="false" default="50000" />
+        <field key="max_attachments" dbtype="int" precision="11" phptype="integer" null="false" default="5" />
+        <field key="deductions" dbtype="smallint" precision="6" phptype="integer" null="false" default="0" />
+
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE" >
+            <column key="ugroup" length="" collation="A" null="false" />
+        </index>
+        <index alias="groupid" name="groupid" primary="false" unique="true" type="BTREE" >
+            <column key="ugroup" length="" collation="A" null="false" />
+        </index>
+        <composite alias="UserRole" class="Userrole" local="ugroup" foreign="ugroup" cardinality="many" owner="local" />
+    </object>
+    <object class="Useronline" table="useronline" extends="xPDOObject">
+        <field key="ip" dbtype="varchar" precision="25" phptype="string" null="false" default="0" />
+        <field key="userId" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" index="pk" />
+        <field key="expire" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+        <field key="uname" dbtype="varchar" precision="25" phptype="string" null="false" index="index" />
+        <field key="invisible" dbtype="varchar" precision="10" phptype="string" null="false" />
+
+        <index alias="kpro_useronline_userId_Idx" name="kpro_useronline_userId_Idx" primary="false" unique="true" type="BTREE" >
+            <column key="userId" length="" collation="A" null="false" />
+        </index>
+        <index alias="fk_kpro_useronline_kpro_user2" name="fk_kpro_useronline_kpro_user2" primary="false" unique="false" type="BTREE" >
+            <column key="uname" length="" collation="A" null="false" />
+        </index>
+        <aggregate alias="User" class="User" local="userId" foreign="userId" cardinality="one" owner="foreign" />
+    </object>
+    <object class="Userrole" table="userrole" extends="xPDOObject">
+        <field key="userId" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" index="pk" />
+        <field key="ugroup" dbtype="mediumint" precision="8" attributes="unsigned" phptype="integer" null="false" index="pk" />
+
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE" >
+            <column key="userId" length="" collation="A" null="false" />
+            <column key="ugroup" length="" collation="A" null="false" />
+        </index>
+        <aggregate alias="UserGroup" class="Usergroup" local="ugroup" foreign="ugroup" cardinality="one" owner="foreign" />
+        <aggregate alias="User" class="User" local="userId" foreign="userId" cardinality="one" owner="foreign" />
+    </object>
+    <options>
+    	<option value="24" name="maxNameLenght">
+    		<value>12</value>
+    		<value>24</value>
+    		<value>36</value></option></options>
+    <lang>
+    	<expression id="User">
+    		<ru_RU>Пользователи</ru_RU>
+    		<en_EN>Users</en_EN></expression>
+        <expression id="User.userID">
+            <ru_RU>Н/Н</ru_RU>
+            <en_EN>ID</en_EN></expression>
+        <expression id="User.uname">
+            <ru_RU>Имя</ru_RU>
+            <en_EN>Name</en_EN></expression>
+        <expression id="UserGroup.groupname">
+            <ru_RU>Роли</ru_RU>
+            <en_EN>Rols</en_EN></expression>
+        <expression id="User.email">
+            <ru_RU>Почта</ru_RU>
+            <en_EN>Email</en_EN></expression>
+        <expression id="">
+            <ru_RU></ru_RU>
+            <en_EN></en_EN></expression>
+        <expression id="">
+            <ru_RU></ru_RU>
+            <en_EN></en_EN></expression>
+        <expression id="">
+            <ru_RU></ru_RU>
+            <en_EN></en_EN></expression></lang></model>

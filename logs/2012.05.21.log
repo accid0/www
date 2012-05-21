@@ -1,0 +1,3 @@
+[2012-05-21 16:23:13] (DEBUG @ /index.php)       
+      [ApplicationHelper : applicationHelper] node not exists. 
+      Processing loading node from xml file.
