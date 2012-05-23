@@ -119,17 +119,11 @@ EOF;
   }
 	/**
 	 * @return string
+	 * @param string $view
 	 * @param Expression $subject
 	 */
-	protected function doExecute(Expression $subject){
-	  $view = '';
+	protected function doExecute($view, Expression $subject){
 	  $parent = $subject->getFileName();
-	  $params = array();
-	  foreach ( $subject->getVars() as $key=>$vl){
-        if ( strpos($key , "__equal$") !== FALSE){
-    	  $view = $vl->getDumpResult('result');
-    	}
-      }
 	  $class = new ReflectionClass($subject);
 	  $namespc = $class->getNamespaceName();
 	  $classnm = $class->getShortName();

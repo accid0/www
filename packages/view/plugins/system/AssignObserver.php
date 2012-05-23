@@ -23,23 +23,16 @@ class AssignObserver extends PluginObserver {
    */
   function init(Observer $obs){
   }
-	/**
-	 * @return string
-	 * @param Expression $subject
-	 */
-	protected function doExecute(Expression $subject){
-	  $name = '';
-	  foreach ( $subject->getVars() as $key=>$vl){
-	    if ( strpos($key , "__equal$") !== FALSE  ){
-	        $name = $vl->getDumpResult('result');
-	    }
-	  }
-	  if ( !is_null($name)){
-  	   $this->getPlugin('registry') ->$name =  $subject->getDumpResult('body');
-	  }
-	  else
-	    $this->ensure(FALSE, "Не найден параметр name");
-	}
+  /**
+   * @return string
+   * @param Expression $subject
+   * @param string $name
+   * @param string $body
+   */
+  protected function doExecute($name , $body, Expression $subject){
+    $this->ensure( empty($name), "Не найден параметр [name]");
+  	$this->getPlugin('registry') ->$name =  $body;    
+  }
 
 	/**
 	 * @return void

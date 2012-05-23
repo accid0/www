@@ -21,18 +21,42 @@ class LangObserver extends PluginObserver {
   private $lang = array();
   /**
    * 
+   * @param xPDOCacheManager $cache
+   * @param string $locale
+   */
+  private function getLocale( $locale){
+    $cache = $this->getCacheManager();
+	$lang = $cache->get( "lang/$locale");
+	if ( !$lang){
+	  $ar = array();
+      $lang = $this->getPlugin('applicationHelper')->findTree( 'lang')->
+        findTree('expression');
+      foreach ( $lang as $l)
+        if ( $l['id'] != ''){
+          $loc = $l->find( 'locale', 'name', $locale);
+      	  if ( !is_null( $loc))  $ar [$l['id']]= $loc['value'];
+        }
+      $cache->add( "lang/$locale", $ar, array( Helper::APPLICATION_COMMON_TAG));
+      $lang = $ar;
+	}
+    return $lang;
+  }
+  /**
+   * 
    * Enter description here ...
    * @param array $keys
    */
   private function getWords( $keys = array()){
     $result = array();
     if ( empty($keys)){
-      foreach ($this->lang as $id => $locs)
-        $result [$id]= $locs[$this->locale];
+      $result = $this->lang[$this->locale];
     }
     else 
-      foreach ( $keys as $id => $locale)
-        $result [$id]= $this->lang[$id][$locale];
+      foreach ( $keys as $id => $locale){
+        if ( !isset( $this->lang[$locale]))
+          $this->lang [$locale]= $this->getLocale($locale);
+        $result [$id]= $this->lang[$locale][$id];
+      }
     return $result;
   }
     /**
@@ -41,21 +65,21 @@ class LangObserver extends PluginObserver {
     */
     protected function install(){
     }
-	/**
+    /**
 	 * @param Expression $subject
+	 * @param mixed $keys
 	 */
-	protected function doExecute(Expression $subject){
-	  $keys = array();
-	  foreach ( $subject->getVars() as $key=>$vl){
-    	 if ( strpos($key , "__equal$") !== FALSE ){
-    	   $l = $vl->getL_Var()->expression();
-    	   if ( is_numeric( $l))
-    	      $keys [$vl->getDumpResult('result')]= $this->locale;
-    	   else
-    	     $keys [$vl->getL_Var()->expression()]= $vl->getDumpResult('result');
-    	 }
+	protected function doExecute($keys, Expression $subject){
+	  if ( is_null( $keys))  $keys = array();
+	  if ( !is_array( $keys))  $keys = array( $keys);
+	  $result = array();
+	  foreach ( $keys as $key=>$vl){
+	    if ( is_numeric( $key))
+    	  $result [$vl]= $this->locale;
+    	else
+    	  $result [$key]= $vl;
       }
-      $this->setResult( $this->getWords( $keys));
+      $this->setResult( $this->getWords( $result));
     }
 	/**
    	* (non-PHPdoc)
@@ -77,23 +101,7 @@ class LangObserver extends PluginObserver {
 	    }
 	  }
 	  else  $this->locale = $cookies->locale;
-	  $cache = $this->getCacheManager();
-	  $this->lang = $cache->get( 'lang/init');
-	  if ( !$this->lang){
-	    $ar = array();
-    	$this->lang = $this->getPlugin('applicationHelper')->findTree( 'lang')->
-    	  findTree('expression');
-    	foreach ( $this->lang as $l)
-    	  if ( $l['id'] != ''){
-    	    $loc = array();
-    	    foreach ( $l->locale as $locale){
-    	      $loc [$locale['name']]= $locale['value'];
-    	    }
-    	    $ar [$l['id']]= $loc;
-    	  }
-    	$cache->add( 'lang/init', $ar, array( Helper::APPLICATION_COMMON_TAG));
-    	$this->lang = $ar;
-	  }
+	  $this->lang [$this->locale]= $this->getLocale( $this->locale);
 	  $this->setResult($this->getWords());
 	}
 	/**

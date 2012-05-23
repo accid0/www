@@ -1,5 +1,5 @@
 <div class="mws-form-row">
-      <label>Required Validation</label>
+      <label><?= $this->lang[(string)$this->data->Имя]; ?></label>
       <div class="mws-form-item large">
         <input rel='1' type="text" name="<?= $this->data->Имя; ?>" class="mws-textinput required" />
       </div>
@@ -17,13 +17,13 @@
       </div>
     </div>
     <div class="mws-form-row">
-      <label>Digit Validation</label>
+      <label><?= $this->lang[(string)$this->data->НН]; ?></label>
       <div class="mws-form-item large">
         <input rel='0' type="text" name="<?= $this->data->НН ?>" class="mws-textinput required digits" />
       </div>
     </div>
     <div class="mws-form-row">
-      <label>Select Box Validation</label>
+      <label><?= $this->lang[(string)$this->data->UserRole->UserGroup->Роли]; ?></label>
       <div class="mws-form-item large">
         <select rel='2' class="required" name="<?= $this->data->UserRole->UserGroup->Роли ?>">
           <option></option>

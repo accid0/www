@@ -35,6 +35,10 @@ class ApplicationController extends AbstractFactory {
    * @var float
    */
   static private $end = 0;
+  /**
+   * 
+   * Enter description here ...
+   */
   private function profile(){
     if ( self::$begin === 0){
       self::$begin = microtime(TRUE);
@@ -174,7 +178,7 @@ class ApplicationController extends AbstractFactory {
       $tpl = new PluginExpression('' , 
               AbstractFactory::getInstance(
               'packages\\view\\factory\\FactoryStorage')->getObject('Null'));
-      $tpl = $this->getPlugin('extend')->execute( $tpl);
+      $tpl = $this->getPlugin('extend')->execute( '', $tpl);
       $b = new NativeBuilder();
       $tpl -> visit($b);
       header("Content-Type: text/html;charset=" . 

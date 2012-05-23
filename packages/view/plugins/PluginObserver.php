@@ -358,7 +358,6 @@ abstract class  PluginObserver implements Observer , Serializable {
 	$this->init($this);
   }
 	/**
-	 * @abstract
 	 * Метод вызывается акцептором и выполняет действия плагина,
 	 * которые в конечном итоге приводят к сохранению в кеше или
 	 * в дочернем узле акцептора
@@ -366,14 +365,15 @@ abstract class  PluginObserver implements Observer , Serializable {
 	 * @see Storage::__call()
 	 * @see DumpObserver::setDumpResult()
 	 * @see CompositeStorage::addStorage()
-	 * @param Expression $subject акцептор наблюдателя
+	 * @param array $arguments
 	 */
-	function execute(Expression $subject){
-	  $this->doExecute($subject);
+	function execute( ){
+	  $args = func_get_args();
+	  call_user_func_array( array( &$this, 'doExecute'), $args);
 	  if ( is_null($this->getResult())) return ;
 	  if ( is_string($this->getResult())){
 	    $newTempl = new TemplateExpression(
-	      $this->getResult(), $subject);
+	      $this->getResult(), end($args));
 	    if ( !is_null($this->fileName)) $newTempl->
 	      setFileName($this->fileName);
 	    return $newTempl;
@@ -381,12 +381,6 @@ abstract class  PluginObserver implements Observer , Serializable {
 	  else 
 	    return $this->getResult();
 	}
-	/**
-	 * 
-	 * Enter description here ...
-	 * @param Expression $subject
-	 */
-	protected abstract function doExecute( Expression $subject);
 	/**
 	 * 
 	 */

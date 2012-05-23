@@ -9,7 +9,7 @@
 */
 namespace views\admin\table;
 use views\admin\MainHeaderTemplate;
-use packages\models\db\DbTableColumnsCollection;
+use packages\models\db\ColumnsInfoCollection;
 class MainHeaderTableTemplate extends MainHeaderTemplate{
 	/**
 	*@todo Укажите файлы шаблонов относительно параметров запроса
@@ -21,7 +21,7 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
 	 * @todo query user
 	 */
 	public function user( $controller){
-      $controller->data = new DbTableColumnsCollection(array(
+      $controller->data = new ColumnsInfoCollection(array(
         'User' => array(
           'НН' => 'userId',
           'Имя' => 'uname',
@@ -32,6 +32,7 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
           )
         )
       ));
-      $controller->title = 'Пользователи';
+	  $controller->form( $controller->data);
+      $controller->title = $controller->lang['User'];
 	}
 }

@@ -7,7 +7,7 @@
       <thead>
           <tr>
           <?php foreach ( $this->data as $field):?>
-            <th ><?= $this->lang[$field]?></th>
+            <th ><?= $this->lang[(string)$field]?></th>
             <?php endforeach;?>
           </tr>
         </thead>

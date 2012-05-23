@@ -24,7 +24,7 @@ class MainTemplate extends PluginExpression{
    * @param Builder $cntr
    */
   private function initTemplate( $cntr){
-    $cntr->lang = $cntr->lang();
+    $cntr->lang = $cntr->lang(NULL);
     $cntr->applicationHelper = $cntr->applicationHelper();
   }
   /**

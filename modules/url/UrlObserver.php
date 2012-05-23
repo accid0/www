@@ -12,18 +12,10 @@ class UrlObserver extends PluginObserver {
     protected function install(){
     }
 	/**
+	 * @param string $query
 	 * @param Expression $subject
 	 */
-	protected function doExecute(Expression $subject){
-	  $query = '';
-	  $params = $subject->getVars();
-	  if ( !empty($params)){
-    	  foreach ( $subject->getVars() as $key=>$vl){
-    	   if ( strpos($key , "__equal$") !== FALSE  ){
-    	        $query = $vl->getDumpResult('result');
-    	    }
-    	  }
-	  }
+	protected function doExecute( $query, Expression $subject){
 	  $this->setResult( $this->getPlugin('applicationHelper')->application->baseurl . 
 	  	"/index.php?q=$query");
     }

@@ -38,14 +38,15 @@ class RegistryObserver extends PluginObserver {
 	 * @return string
 	 * @param Expression $subject
 	 */
-	protected function doExecute(Expression $subject){
+	protected function doExecute( Expression $subject){
 	  $name = $subject->getDumpResult('name');
 	  if ( isset( $this->objects[$name])){
         $this->setResult($this->$name);
 	  }
 	  else{
   	    $plugin = $this->getPlugin($this->$name);
-  	    $this->setResult($plugin->execute($subject));
+  	    $this->setResult(call_user_func_array( array( &$plugin, 'execute'), 
+  	      func_get_args()));
 	  }
 	}
 

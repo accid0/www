@@ -120,27 +120,11 @@ class NativeBuilder extends Visitorer{
       return;
     }
     $plugin = $this->aC->getPlugin( $name);
-    $params = array();
-    $body = '';
-    if ( isset( $arguments[0])) $params = $arguments[0];
-    if ( isset( $arguments[1])) $body = $arguments[1];
-    $this->exn->cleanVars();
-    //$class = new ReflectionClass( $this->exn);
-    //$tpl = $class->newInstanceArgs( array( '', $this->exn));
     $tpl = $this->exn;
-    if ( !is_array( $params))  $params = array( $params);
-    foreach ($params as $key => $value){
-      $v = new BinaryOperatorExpression( '', $tpl);
-      $v->addVar( new HtmlExpression($key, $v), '=', 
-        new HtmlExpression('', $v));
-      $v->setDumpResult('result', $value);
-      $tpl->addVar( '__equal$' . $v->getId(), $v);
-    }
-    $tpl->setDumpResult('body', $body);
     $tpl->setDumpResult('name', $name);
-    //$tpl->attach( $plugin);
-    //$this->exn->addStorage( $tpl);
-    $result = $plugin->execute( $tpl);
+    $arguments []= $tpl;
+    $result = call_user_func_array( array( &$plugin, 'execute'), 
+      $arguments);
     if ( $result instanceof  Expression){
       $temp = $this->exn;
       if ( $result->getFileName() != $temp->getFileName()){
@@ -150,7 +134,6 @@ class NativeBuilder extends Visitorer{
       }
       else 
         return $result->expression();
-      //print $result->expression();
       $this->exn = $temp;
     }
     else return $result;

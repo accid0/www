@@ -100,40 +100,50 @@ class FactoryPluginObserver extends AbstractFactory{
     if ( !is_dir($file_modules->getPath()))
       @mkdir($file_modules->getPath(), 0755, true);
     $fs = $file_modules->openFile('a');
-    $fs->fwrite("<?php\n");
     $nas = str_replace('/','\\',$file_modules->getPath());
-    $fs->fwrite("namespace $nas;\n");
-    $fs->fwrite("use packages\\view\\expression\\Expression;\n");
-    $fs->fwrite("use packages\\view\\plugins\\PluginObserver;\n");
-    $fs->fwrite("use packages\\view\\exception\\PluginObserverException;\n");
-    $fs->fwrite("use packages\\models\\observer\\Observer;\n");
     $cls =  $file_modules->getBasename('.php');
-    $fs->fwrite('class '.$cls.' extends PluginObserver {
-    /**
-    * (non-PHPdoc)
-    * @see packages\view\plugins.PluginObserver::install()
-    */
-    protected function install(){
-    }
-	/**
-	 * @param Expression $subject
-	 */
-	protected function doExecute(Expression $subject){
-    }
-	/**
-   	* (non-PHPdoc)
-   	* @see packages\view\plugins.PluginObserver::init()
-	*/
-	function init(Observer $obs){
-	}
-	/**
-	*@todo // constructor plugin
-	*/
-	function __construct(){
-	  parent::__construct();
-	}
-}'  );
-    $fs->close();
+    $code = <<<EOF
+<?php
+/**
+*@name $nas\\$cls.php
+*@packages models
+*@subpackage plugin
+*@author Andrew Scherbakov
+*@version 1.0
+*@copyright created
+*/
+namespace $nas;
+use packages\\view\\expression\\Expression;
+use packages\\view\\plugins\\PluginObserver;
+use packages\\models\\observer\\Observer;
+class $cls extends PluginObserver {
+  /**
+  * (non-PHPdoc)
+  * @see packages\view\plugins.PluginObserver::install()
+  */
+  protected function install(){
+  }
+  /**
+  * @param Expression \$subject
+  */
+  protected function doExecute(Expression \$subject){
+  }
+  /**
+  * (non-PHPdoc)
+  * @see packages\view\plugins.PluginObserver::init()
+  */
+  function init(Observer \$obs){
+  }
+  /**
+  *@todo // constructor plugin
+  */
+  function __construct(){
+  	parent::__construct();
+  }
+}
+EOF;
+    $fs->fwrite($code);
+    unset($fs);
     return $this->getPlugin( $nas . '\\' . $cls, $str);
   }
 }
