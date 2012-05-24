@@ -79,12 +79,14 @@ class FactoryPluginObserver extends AbstractFactory{
       $pathp = $this->getPath();
       $file_modules = new SplFileInfo($pathp . $str."Observer.php");
       $name_module = $file_modules->getBaseName("Observer.php");
-      $file_modules = new SplFileInfo($file_modules->getPath()."/$name_module/".ucfirst($name_module)."Observer.php");
+      $pathp = $file_modules->getPath()."/$name_module/";
+      $file_modules = new SplFileInfo(__ROOT_DIR__. '\\' . $pathp . 
+        ucfirst($name_module)."Observer.php");
       if ($file_modules->isFile() === TRUE){
-        $class = str_replace('/','\\',$file_modules->getPath())."\\".$file_modules->getBaseName(".php");
+        $class = str_replace('/','\\',$pathp) . $file_modules->getBaseName(".php");
         return $this->getPlugin( $class, $str);
       }
-      $file_system = new SplFileInfo( self::_SYSTEM_PATH . $str."Observer.php");
+      $file_system = new SplFileInfo( __ROOT_DIR__. '\\' . self::_SYSTEM_PATH . $str."Observer.php");
       $file_system = new SplFileInfo($file_system->getPath()."/".ucfirst($file_system->getBaseName()));
     
       if ($file_system->isFile() === TRUE){
