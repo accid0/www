@@ -6,9 +6,9 @@ use packages\models\application\Request;
 use Exception, PDO, xPDO, xPDOCriteria, xPDOQuery, xPDOObject;
 use xPDOCacheManager;
 class DbPersistenceFactory extends AbstractFactory{
-  const _DB_USER = 'test';
-  const _DB_DNS = 'mysql:host=localhost;dbname=test';
-  const _DB_PASS = 'test';
+  const _DB_USER = '151619';
+  const _DB_DNS = 'mysql:host=localhost;dbname=151619';
+  const _DB_PASS = '12121212';
   const _DB_TYPE = 'mysql';
   const _DB_PREFIX = 'kpro_';
   const _DB_CHARSET = 'utf8';

@@ -1,5 +1,7 @@
 <?php
 namespace packages\view\plugins;
+use packages\models\application\Helper;
+
 use packages\models\application\ApplicationHelperIterator;
 
 use packages\view\plugins\system\CookiesObserver;
@@ -66,15 +68,14 @@ abstract class  PluginObserver implements Observer , Serializable {
   private $access = FALSE;
   /**
    * 
-   * @var SimpleXMLElement
+   * @var Helper
    */
   private $section = NULL;
   /**
    * 
    * Enter description here ...
    */
-  private function loadPackage(){
-    $section = $this->getSection();
+  private function loadPackage(Helper $section){
     if ( !is_null($section) && $section['access'] == 'enable'){
 	    if ( $section['package'] != ''){
 	      $this->getxPDO()->addPackage( $section['package'], 'packages/db/');  
@@ -324,11 +325,11 @@ abstract class  PluginObserver implements Observer , Serializable {
 	        $section ['package']= $package; 
 	      }
 	    }
+	    $this->loadPackage( $section);
 	    $this->install();
 	  }
-	  else{
-	    $section->setXPath('//plugin[normalize-space(@name)="' .  $name . '"]');
-	  }
+	  else  $this->loadPackage( $section);
+	  $section->setXPath('//plugin[normalize-space(@name)="' .  $name . '"]');
 	  $this->section = $section;
 	}
 	/**
@@ -351,7 +352,6 @@ abstract class  PluginObserver implements Observer , Serializable {
 	 */
   function __construct(){
 	PluginObserver::init( $this);
-	PluginObserver::loadPackage();
 	if ( !$this->system && !( $this instanceof  AuthPlugin) ){
       $this->access($this->getSection()->permissions);
     }

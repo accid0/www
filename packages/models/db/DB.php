@@ -22,7 +22,7 @@ class DB extends xPDO{
   	    xPDO::OPT_AUTO_CREATE_TABLES => TRUE,
   	    'charset' => DbPersistenceFactory::_DB_CHARSET
       ), array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
 		PDO::ATTR_PERSISTENT => FALSE,
 		PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE
       )

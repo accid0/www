@@ -1,0 +1,61 @@
+[2012-05-24 10:02:28] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:18:13] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:32:15] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:33:11] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:33:37] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:34:01] (DEBUG @ /index.php) [MainTemplate: admin/mws/admin.tpl] Поле [title] не доступно.
+[2012-05-24 11:38:25] (DEBUG @ /index.php)       
+      [ApplicationHelper : applicationHelper] node not exists. 
+      Processing loading node from xml file.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/user.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/mysql/user.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/usergroup.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/mysql/usergroup.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/useronline.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/mysql/useronline.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/userrole.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:29] (INFO @ /index.php) Skipping packages/db/User/mysql/userrole.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 11:38:31] (ERROR @ /index.php) Error 42S02 executing statement:
+INSERT INTO `kpro_usergroup` (`ugroup`, `groupname`, `groupmaxpn`, `groupmaxsig`, `maxpnlength`, `maxcommlength`, `maxpicdownload`, `avatar_size`, `avatar_width`, `avatar_height`, `set_default_avatar`, `maxlength_post`, `max_attachments`, `deductions`) VALUES (1, 'Администраторы', 50, 100, 1000, 500, 5, 15360, 120, 100, 0, 50000, 5, 0)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table '151619.kpro_usergroup' doesn't exist
+)
+
+[2012-05-24 11:38:31] (INFO @ /index.php) Created table `kpro_usergroup`
+SQL: CREATE TABLE `kpro_usergroup` (`ugroup` MEDIUMINT(8) unsigned NOT NULL AUTO_INCREMENT, `groupname_single` VARCHAR(75) NOT NULL, `groupname` VARCHAR(100) NOT NULL, `groupmaxpn` MEDIUMINT(8) unsigned NOT NULL DEFAULT '50', `groupmaxsig` MEDIUMINT(8) unsigned NOT NULL DEFAULT '100', `maxpnlength` MEDIUMINT(8) unsigned NOT NULL DEFAULT '1000', `maxcommlength` MEDIUMINT(8) unsigned NOT NULL DEFAULT '500', `maxpicdownload` SMALLINT(5) unsigned NOT NULL DEFAULT '5', `avatar_size` INT(10) unsigned NOT NULL DEFAULT '15360', `avatar_width` INT(11) NOT NULL DEFAULT '120', `avatar_height` INT(11) NOT NULL DEFAULT '100', `default_avatar` VARCHAR(255) NOT NULL, `set_default_avatar` TINYINT(4) NOT NULL DEFAULT '0', `maxlength_post` INT(11) NOT NULL DEFAULT '50000', `max_attachments` INT(11) NOT NULL DEFAULT '5', `deductions` SMALLINT(6) NOT NULL DEFAULT '0', PRIMARY KEY (`ugroup`), UNIQUE KEY `groupid` (`ugroup`)) ENGINE=MyISAM
+
+[2012-05-24 11:38:31] (ERROR @ /index.php) Error 42S02 executing statement:
+INSERT INTO `kpro_user` (`userId`, `uname`, `user_regdate`, `passtemp`, `salt`, `posts`, `last_login`, `user_viewemail`, `user_canpn`, `invisible`, `pntomail`, `status`, `user_posts`, `recieve_newsletter`, `usedefault_avatar`, `country`, `person`, `show_public`, `fsk18`) VALUES (1, 'Администратор', 0, 'ac5c15905fcb5eeab8cbd7830295265f', 'LYNe6b', 0, 0, 'yes', 'yes', 'no', 'yes', 1, 0, 1, 1, 'DE', 'private', 1, 0)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table '151619.kpro_user' doesn't exist
+)
+
+[2012-05-24 11:38:31] (INFO @ /index.php) Created table `kpro_user`
+SQL: CREATE TABLE `kpro_user` (`userId` INT(10) unsigned NOT NULL AUTO_INCREMENT, `name` VARCHAR(50) NOT NULL, `uname` VARCHAR(25) NOT NULL, `email` VARCHAR(65) NOT NULL, `url` VARCHAR(200) NOT NULL, `user_avatar_pref` VARCHAR(255) NOT NULL, `user_regdate` INT(10) unsigned NOT NULL DEFAULT '0', `user_sig` TEXT NOT NULL, `user_from` VARCHAR(75) NOT NULL, `user_interests` TEXT NOT NULL, `user_birthday` VARCHAR(10) NOT NULL, `pass` VARCHAR(35) NOT NULL, `passtemp` VARCHAR(35) NOT NULL, `salt` VARCHAR(35) NOT NULL, `posts` MEDIUMINT(8) unsigned NOT NULL DEFAULT '0', `theme` VARCHAR(75) NOT NULL, `last_login` INT(10) unsigned NOT NULL DEFAULT '0', `user_viewemail` ENUM('yes','no') NOT NULL DEFAULT 'yes', `user_canpn` ENUM('yes','no') NOT NULL DEFAULT 'yes', `invisible` ENUM('yes','no') NOT NULL DEFAULT 'no', `pntomail` ENUM('yes','no') NOT NULL DEFAULT 'yes', `status` TINYINT(3) unsigned NOT NULL DEFAULT '1', `user_lastonline` INT(10) unsigned NULL, `user_lastonline_temp` INT(10) unsigned NULL, `user_posts` MEDIUMINT(8) unsigned NOT NULL DEFAULT '0', `user_lastpost` INT(10) unsigned NULL, `recieve_newsletter` TINYINT(4) NOT NULL DEFAULT '1', `usedefault_avatar` SMALLINT(6) NOT NULL DEFAULT '1', `user_avatar` VARCHAR(255) NOT NULL, `country` CHAR(2) NOT NULL DEFAULT 'DE', `group_id_misc` VARCHAR(100) NULL, `person` ENUM('private','company') NOT NULL DEFAULT 'private', `phone` VARCHAR(255) NOT NULL, `phone_mobile` VARCHAR(255) NOT NULL, `fax` VARCHAR(255) NOT NULL, `lastname` VARCHAR(255) NOT NULL, `zip` VARCHAR(255) NOT NULL, `street` VARCHAR(255) NOT NULL, `title` VARCHAR(20) NOT NULL, `show_public` TINYINT(3) unsigned NOT NULL DEFAULT '1', `company` VARCHAR(255) NOT NULL, `ustid` VARCHAR(255) NOT NULL, `fsk18` TINYINT(3) unsigned NOT NULL DEFAULT '0', `user_icq` VARCHAR(30) NOT NULL, `user_aim` VARCHAR(30) NOT NULL, `user_skype` VARCHAR(30) NOT NULL, PRIMARY KEY (`userId`), UNIQUE KEY `kpro_user_uname_Idx` (`uname`), UNIQUE KEY `kpro_user_userId_Idx` (`userId`), INDEX `user_regdate` (`user_regdate`), INDEX `group_id_misc` (`group_id_misc`), INDEX `user_lastonline` (`user_lastonline`), INDEX `user_lastonline_temp` (`user_lastonline_temp`)) ENGINE=MyISAM
+
+[2012-05-24 11:38:31] (ERROR @ /index.php) Error 42S02 executing statement:
+INSERT INTO `kpro_userrole` (`userId`, `ugroup`) VALUES (1, 1)
+Array
+(
+    [0] => 42S02
+    [1] => 1146
+    [2] => Table '151619.kpro_userrole' doesn't exist
+)
+
+[2012-05-24 11:38:31] (INFO @ /index.php) Created table `kpro_userrole`
+SQL: CREATE TABLE `kpro_userrole` (`userId` INT(10) unsigned NOT NULL, `ugroup` MEDIUMINT(8) unsigned NOT NULL, PRIMARY KEY (`userId`,`ugroup`)) ENGINE=MyISAM
+

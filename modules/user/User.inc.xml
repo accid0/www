@@ -131,26 +131,26 @@
     		<value>36</value></option></options>
     <lang>
     	<expression id="User">
-    		<ru_RU>Пользователи</ru_RU>
-    		<en_EN>Users</en_EN></expression>
+    		<locale name="ru_RU" value="Пользователи"></locale>
+    		<locale name="en_EN" value="Users"></locale></expression>
         <expression id="User.userID">
-            <ru_RU>Н/Н</ru_RU>
-            <en_EN>ID</en_EN></expression>
+            <locale name="ru_RU" value="ИД"></locale>
+            <locale name="en_EN" value="ID"></locale></expression>
         <expression id="User.uname">
-            <ru_RU>Имя</ru_RU>
-            <en_EN>Name</en_EN></expression>
+            <locale name="ru_RU" value="Ф.И.О."></locale>
+            <locale name="en_EN" value="Names"></locale></expression>
         <expression id="UserGroup.groupname">
-            <ru_RU>Роли</ru_RU>
-            <en_EN>Rols</en_EN></expression>
+            <locale name="ru_RU" value="Роли"></locale>
+            <locale name="en_EN" value="Rolls"></locale></expression>
         <expression id="User.email">
-            <ru_RU>Почта</ru_RU>
-            <en_EN>Email</en_EN></expression>
+            <locale name="ru_RU" value="Почта"></locale>
+            <locale name="en_EN" value="Email"></locale></expression>
         <expression id="">
-            <ru_RU></ru_RU>
-            <en_EN></en_EN></expression>
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
         <expression id="">
-            <ru_RU></ru_RU>
-            <en_EN></en_EN></expression>
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
         <expression id="">
-            <ru_RU></ru_RU>
-            <en_EN></en_EN></expression></lang></model>
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression></lang></model>
