@@ -180,7 +180,7 @@ EOL
       return ;
     }
     foreach( $xml as $name => $child){
-      $key = md5(microtime());
+      $key = substr( md5(microtime()), 0, 10);
       $this->loadXml( $key, $child);
       $children [ (string)$name][]= $key;
     }
