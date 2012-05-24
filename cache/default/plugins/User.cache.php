@@ -3,5 +3,5 @@
   array (
     'commonApplication' => 1,
   ),
-  'data' => 'e2efb6a3eb66c53c8ffb2629520376c1',
+  'data' => '5927f12d882a74698b7a314516139ed8',
 );

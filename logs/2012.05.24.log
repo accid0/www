@@ -59,3 +59,112 @@ Array
 [2012-05-24 11:38:31] (INFO @ /index.php) Created table `kpro_userrole`
 SQL: CREATE TABLE `kpro_userrole` (`userId` INT(10) unsigned NOT NULL, `ugroup` MEDIUMINT(8) unsigned NOT NULL, PRIMARY KEY (`userId`,`ugroup`)) ENGINE=MyISAM
 
+[2012-05-24 12:45:07] (DEBUG @ /index.php)       
+      [ApplicationHelper : applicationHelper] node not exists. 
+      Processing loading node from xml file.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/user.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/mysql/user.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/usergroup.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/mysql/usergroup.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/useronline.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/mysql/useronline.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/userrole.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:12] (INFO @ /index.php) Skipping packages/db/User/mysql/userrole.class.php; file already exists.
+Move existing class files to regenerate them.
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_usergroup` (`ugroup`, `groupname`, `groupmaxpn`, `groupmaxsig`, `maxpnlength`, `maxcommlength`, `maxpicdownload`, `avatar_size`, `avatar_width`, `avatar_height`, `set_default_avatar`, `maxlength_post`, `max_attachments`, `deductions`) VALUES (1, 'Администраторы', 50, 100, 1000, 500, 5, 15360, 120, 100, 0, 50000, 5, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '1' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_user` (`userId`, `uname`, `user_regdate`, `passtemp`, `salt`, `posts`, `last_login`, `user_viewemail`, `user_canpn`, `invisible`, `pntomail`, `status`, `user_posts`, `recieve_newsletter`, `usedefault_avatar`, `country`, `person`, `show_public`, `fsk18`) VALUES (1, 'Администратор', 0, '8b3b801680283ff9d767044513a2e0cb', 'DCC4lX', 0, 0, 'yes', 'yes', 'no', 'yes', 1, 0, 1, 1, 'DE', 'private', 1, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '1' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_userrole` (`userId`, `ugroup`) VALUES (1, 1)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '1-1' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_usergroup` (`ugroup`, `groupname`, `groupmaxpn`, `groupmaxsig`, `maxpnlength`, `maxcommlength`, `maxpicdownload`, `avatar_size`, `avatar_width`, `avatar_height`, `set_default_avatar`, `maxlength_post`, `max_attachments`, `deductions`) VALUES (1, 'Администраторы', 50, 100, 1000, 500, 5, 15360, 120, 100, 0, 50000, 5, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '1' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_user` (`userId`, `uname`, `user_regdate`, `passtemp`, `salt`, `posts`, `last_login`, `user_viewemail`, `user_canpn`, `invisible`, `pntomail`, `status`, `user_posts`, `recieve_newsletter`, `usedefault_avatar`, `country`, `person`, `show_public`, `fsk18`) VALUES (1, 'Администратор', 0, '8b3b801680283ff9d767044513a2e0cb', 'DCC4lX', 0, 0, 'yes', 'yes', 'no', 'yes', 1, 0, 1, 1, 'DE', 'private', 1, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '1' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_usergroup` (`ugroup`, `groupname`, `groupmaxpn`, `groupmaxsig`, `maxpnlength`, `maxcommlength`, `maxpicdownload`, `avatar_size`, `avatar_width`, `avatar_height`, `set_default_avatar`, `maxlength_post`, `max_attachments`, `deductions`) VALUES (2, 'Гости', 50, 100, 1000, 500, 5, 15360, 120, 100, 0, 50000, 5, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '2' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_user` (`userId`, `uname`, `user_regdate`, `posts`, `last_login`, `user_viewemail`, `user_canpn`, `invisible`, `pntomail`, `status`, `user_posts`, `recieve_newsletter`, `usedefault_avatar`, `country`, `person`, `show_public`, `fsk18`) VALUES (2, 'Гость', 0, 0, 0, 'yes', 'yes', 'no', 'yes', 1, 0, 1, 1, 'DE', 'private', 1, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '2' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_userrole` (`userId`, `ugroup`) VALUES (2, 2)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '2-2' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_usergroup` (`ugroup`, `groupname`, `groupmaxpn`, `groupmaxsig`, `maxpnlength`, `maxcommlength`, `maxpicdownload`, `avatar_size`, `avatar_width`, `avatar_height`, `set_default_avatar`, `maxlength_post`, `max_attachments`, `deductions`) VALUES (2, 'Гости', 50, 100, 1000, 500, 5, 15360, 120, 100, 0, 50000, 5, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '2' for key 'PRIMARY'
+)
+
+[2012-05-24 12:45:18] (ERROR @ /index.php) Error 23000 executing statement:
+INSERT INTO `kpro_user` (`userId`, `uname`, `user_regdate`, `posts`, `last_login`, `user_viewemail`, `user_canpn`, `invisible`, `pntomail`, `status`, `user_posts`, `recieve_newsletter`, `usedefault_avatar`, `country`, `person`, `show_public`, `fsk18`) VALUES (2, 'Гость', 0, 0, 0, 'yes', 'yes', 'no', 'yes', 1, 0, 1, 1, 'DE', 'private', 1, 0)
+Array
+(
+    [0] => 23000
+    [1] => 1062
+    [2] => Duplicate entry '2' for key 'PRIMARY'
+)
+
