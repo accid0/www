@@ -28,4 +28,3 @@ function deltree($folder){
 }
 error_reporting(E_ALL);
 deltree( __DIR__ . "/cache");
-deltree( __DIR__ . "/modules/extend");

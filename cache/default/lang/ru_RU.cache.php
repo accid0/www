@@ -6,7 +6,7 @@
   'data' => 
   array (
     'User' => 'Пользователи',
-    'User.userID' => 'ИД',
+    'User.userId' => '№',
     'User.uname' => 'Ф.И.О.',
     'UserGroup.groupname' => 'Роли',
     'User.email' => 'Почта',
