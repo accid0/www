@@ -12,7 +12,7 @@ class DbPersistenceFactory extends AbstractFactory{
   const _DB_TYPE = 'mysql';
   const _DB_PREFIX = 'kpro_';
   const _DB_CHARSET = 'utf8';
-  const _DB_DEBUG = FALSE;
+  const _DB_DEBUG = TRUE;
   /**
    * 
    * Enter description here ...

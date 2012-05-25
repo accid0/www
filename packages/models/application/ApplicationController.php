@@ -107,9 +107,11 @@ class ApplicationController extends AbstractFactory {
         $appController->getPlugin('registry')->errorMsg = 
           preg_replace($pa, $re, $msg->getMessage() . " в файле[" . 
           $msg->getFile() . "] строка " . $msg->getLine());
+        $appController->getDbPersistenceFactory()->getxPDO()->log(
+          xPDO::LOG_LEVEL_DEBUG, $msg);
       }else{
         $appController->getDbPersistenceFactory()->getxPDO()->log(
-        xPDO::LOG_LEVEL_DEBUG, $msg);
+          xPDO::LOG_LEVEL_DEBUG, $msg);
         $appController->getPlugin('registry')->errorMsg = '404 не найдено' ;
       }
       $a_H = $appController->getPlugin( 'applicationHelper');

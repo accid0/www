@@ -81,22 +81,21 @@ class FactoryPluginObserver extends AbstractFactory{
       $name_module = $file_modules->getBaseName("Observer.php");
       $pathp = str_replace('\\', DIRECTORY_SEPARATOR , $pathp);
       $pathp = $file_modules->getPath() . DIRECTORY_SEPARATOR . 
-        $name_module . DIRECTORY_SEPARATOR;
+        $name_module;
       $file_modules = new SplFileInfo(__ROOT_DIR__ . 
-        DIRECTORY_SEPARATOR . $pathp . ucfirst($name_module)."Observer.php");
+        DIRECTORY_SEPARATOR . $pathp . DIRECTORY_SEPARATOR .
+        ucfirst($name_module)."Observer.php");
       if ($file_modules->isFile() === TRUE){
         
-        $class = str_replace('/','\\',$pathp) . $file_modules->getBaseName(".php");
+        $class = str_replace('/','\\',$pathp) . '\\' . $file_modules->getBaseName(".php");
         return $this->getPlugin( $class, $str);
       }
       $file_system = new SplFileInfo( __ROOT_DIR__ . 
-        DIRECTORY_SEPARATOR . self::_SYSTEM_PATH . $str."Observer.php");
-      $file_system = new SplFileInfo(str_replace('\\',  DIRECTORY_SEPARATOR,
-        $file_system->getPath()) . DIRECTORY_SEPARATOR . 
-        ucfirst($file_system->getBaseName()));
+        DIRECTORY_SEPARATOR . str_replace('\\',  DIRECTORY_SEPARATOR, 
+        self::_SYSTEM_PATH) . ucfirst( $str) ."Observer.php");
       if ($file_system->isFile() === TRUE){
         
-        $class = self::_SYSTEM_PATH . ucfirst( $str) .'Observer';
+        $class = self::_SYSTEM_PATH . $file_system->getBaseName(".php");
         return $this->getPlugin( $class, $str);
       }
     }
@@ -104,8 +103,12 @@ class FactoryPluginObserver extends AbstractFactory{
       throw new FactoryPluginObserverException(
       	"[FactoryPluginObserver::$str] " . $e);
     }
-    if ( !is_dir($file_modules->getPath()))
-      @mkdir($file_modules->getPath(), 0755, true);
+    if ( !is_dir($file_modules->getPath())){
+      @mkdir($file_modules->getPath(), 0777, true);
+      if ( !is_writable($file_modules->getPath())) {
+        @ chmod($file_modules->getPath(), 0777);
+      }
+    }
     $fs = $file_modules->openFile('a');
     $nas = str_replace('/','\\',$pathp);
     $cls =  $file_modules->getBasename('.php');

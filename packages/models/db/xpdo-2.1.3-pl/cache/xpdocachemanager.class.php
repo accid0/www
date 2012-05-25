@@ -46,7 +46,8 @@ class xPDOCacheManager {
     public function __construct(& $xpdo, $options = array()) {
         $this->xpdo= & $xpdo;
         $this->options= $options;
-        $this->_umask= umask();
+        //$this->_umask= umask();
+        $this->_umask = 0;
     }
 
     /**

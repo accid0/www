@@ -53,7 +53,8 @@ class ExtendObserver extends PluginObserver {
    */
   private function createTemplate( $classname, $parent){
     try{
-      $file = new SplFileInfo( $classname . '.php');
+      $file = new SplFileInfo( __ROOT_DIR__. DIRECTORY_SEPARATOR . 
+        str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php');
       if ( $file->isFile() === TRUE){
         $result = new $classname( '', $parent);
       }
@@ -85,7 +86,7 @@ class $name extends $parentClass{
 }
 EOF;
         if ( !is_dir($file->getPath()))
-          @mkdir($file->getPath(), 0755, true);
+          @mkdir($file->getPath(), 0777, true);
         $fs = $file->openFile('a');
         $fs->fwrite( $code);
         $fs->eof();
