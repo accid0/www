@@ -70,11 +70,10 @@ class NativeBuilder extends Visitorer{
    * 
    * Enter description here ...
    */
-  function __construct(){
+  function __construct(PluginExpression $exn){
     $this->tpl = '';
     $this->__data = array();
-    $this->exn = AbstractFactory::getInstance(
-              'packages\\view\\factory\\FactoryStorage')->getObject('Null');
+    $this->exn = $exn;
     $this->aC =AbstractFactory::getInstance(
     	"packages\\models\\application\\ApplicationController");
     $this->baseFolder = (string)$this->aC->getPlugin('applicationHelper')->
@@ -92,7 +91,7 @@ class NativeBuilder extends Visitorer{
     $file = $exn->getFileName();
     $class = new ReflectionClass( $exn);
     $m = $exn->getQuery();
-    ob_start();
+    //ob_start();
     if ( $class->hasMethod( $m)){
       $data = $exn->$m( $this);
     }
@@ -101,11 +100,11 @@ class NativeBuilder extends Visitorer{
         include ( $this->baseFolder . $file);
       }
       catch ( Exception $e){
-        ob_end_clean();
+        //ob_end_clean();
         throw new Exception( "[NativeBuilder::" .  $file . "] " . 
           $e->getMessage(),$e-> getCode(), $e->getPrevious());
       }
-      $this->tpl = ob_get_clean();
+      //$this->tpl = ob_get_clean();
     }
   }
   /**
@@ -123,8 +122,7 @@ class NativeBuilder extends Visitorer{
     $tpl = $this->exn;
     $tpl->setDumpResult('name', $name);
     $arguments []= $tpl;
-    $result = call_user_func_array( array( &$plugin, 'execute'), 
-      $arguments);
+    $result = call_user_func_array( array( &$plugin, 'execute'), $arguments);
     if ( $result instanceof  Expression){
       $temp = $this->exn;
       if ( $result->getFileName() != $temp->getFileName()){

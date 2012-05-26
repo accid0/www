@@ -8,6 +8,8 @@
 *@copyright created  2012 - 05 May - 14 Mon
 */
 namespace views\admin\table;
+use packages\models\visitorer\Visitorer;
+
 use views\admin\MainHeaderTemplate;
 use packages\models\db\ColumnsInfoCollection;
 class MainHeaderTableTemplate extends MainHeaderTemplate{
@@ -17,10 +19,16 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
 	*/
 	protected $templates = array(
 	);
+  /**
+   * (non-PHPdoc)
+   * @see packages\view\expression.PluginExpression::initialize()
+   */
+	protected function initialize( Visitorer $cntr){}
 	/**
 	 * @todo query user
+	 * @param Visitorer $controller
 	 */
-	public function user( $controller){
+	public function user( Visitorer $controller){
       $controller->data = new ColumnsInfoCollection(array(
         'User' => array(
           'НН' => 'userId',

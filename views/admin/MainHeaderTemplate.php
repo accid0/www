@@ -8,6 +8,8 @@
 *@copyright created  2012 - 05 May - 14 Mon
 */
 namespace views\admin;
+use packages\models\visitorer\Visitorer;
+
 use views\MainTemplate;
 class MainHeaderTemplate extends MainTemplate{
 	/**
@@ -17,4 +19,9 @@ class MainHeaderTemplate extends MainTemplate{
 	protected $templates = array(
 	  'table' => 'admin/mws/tpl/table/htable.tpl'
 	);
+  /**
+   * (non-PHPdoc)
+   * @see packages\view\expression.PluginExpression::initialize()
+   */
+	protected function initialize( Visitorer $cntr){}
 }

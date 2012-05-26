@@ -124,7 +124,7 @@ abstract class Storage implements Observable, Visitable {
 	 * @param Visitorer
 	 * @see models/visitorer/packages\models\visitorer.Visitable::visit()
 	 */
-	final function visit(Visitorer $vsr) {
+	public function visit(Visitorer $vsr) {
 	    try{
 		  $class = new ReflectionClass($this);
 	    }

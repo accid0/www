@@ -8,6 +8,9 @@
 *@copyright created 13.05.2012
 */
 namespace views;
+
+use packages\models\visitorer\Visitorer;
+
 use packages\models\factory\AbstractFactory;
 
 use packages\view\expression\PluginExpression;
@@ -21,35 +24,30 @@ class MainTemplate extends PluginExpression{
     'hello' => 'admin/mws/tpl/hello.tpl'
   );
   /**
-   * @param Builder $cntr
+   * (non-PHPdoc)
+   * @see packages\view\expression.PluginExpression::initialize()
    */
-  private function initTemplate( $cntr){
+  protected function initialize( Visitorer $cntr){
     $cntr->lang = $cntr->lang(NULL);
     $cntr->applicationHelper = $cntr->applicationHelper();
   }
   /**
-   * @param Builder $cntr
+   * @param Visitorer $cntr
    */
-  public function cache( $cntr){
+  public function cache( Visitorer $cntr){
     $cntr->applicationHelper()->clean();
   }
   /**
-   * @param Builder $cntr
+   * @param Visitorer $cntr
    */
-  public function phpinfo( $cntr){
+  public function phpinfo( Visitorer $cntr){
     phpinfo();
   }
   /**
-   * @param Builder $cntr
-   */
-  public function admin( $cntr){
-    $this->initTemplate( $cntr);
-  }
-  /**
    * Print json answer
-   * @param Builder $cntr
+   * @param Visitorer $cntr
    */
-  public function datatable( $cntr){
+  public function datatable( Visitorer $cntr){
     print $cntr->datatable();
   }
 }

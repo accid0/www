@@ -122,7 +122,7 @@ class ApplicationController extends AbstractFactory {
               'packages\\view\\factory\\FactoryStorage')->
               getObject('Null'));
       $tpl->setFileName((string)$a_H->application->errorPage);
-      $builder = new NativeBuilder();
+      $builder = new NativeBuilder( $tpl);
       $tpl -> visit($builder);
       header("HTTP/1.0 404 Not Found");
       header("Status: 404 Not Found");
@@ -181,12 +181,12 @@ class ApplicationController extends AbstractFactory {
               AbstractFactory::getInstance(
               'packages\\view\\factory\\FactoryStorage')->getObject('Null'));
       $tpl = $this->getPlugin('extend')->execute( '', $tpl);
-      $b = new NativeBuilder();
+      $b = new NativeBuilder( $tpl);
       $tpl -> visit($b);
       header("Content-Type: text/html;charset=" . 
         DbPersistenceFactory::_DB_CHARSET );
       //print $this->getDbPersistenceFactory()->getCacheManager()->getN();
-      print $b->getDumpResult();
+      //print $b->getDumpResult();
       $this->getPlugin( 'session')->close();
       //$this->profile();
       $this->getDbPersistenceFactory()->closexPDO();

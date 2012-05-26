@@ -2,6 +2,10 @@
 
 namespace packages\view\expression;
 
+use packages\models\storage\Storage;
+
+use packages\models\visitorer\Visitorer;
+
 use packages\view\plugins\ArgumentsObserver;
 
 use packages\view\plugins\DumpObserver;
@@ -38,5 +42,18 @@ class PluginExpression extends Expression implements Template{
       $this->setFileName( $result);
     }
     return $result;
+  }
+  /**
+   * (non-PHPdoc)
+   * @see packages\view\expression.Template::initialize()
+   */
+  protected function initialize(Visitorer $controller){}
+  /**
+   * (non-PHPdoc)
+   * @see packages\models\storage.Storage::visit()
+   */
+  final public function visit(Visitorer $vsr) {
+    $this->initialize($vsr);
+    return Storage::visit($vsr);
   }
 }

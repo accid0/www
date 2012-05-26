@@ -112,6 +112,7 @@ class FactoryPluginObserver extends AbstractFactory{
     $fs = $file_modules->openFile('a');
     $nas = str_replace('/','\\',$pathp);
     $cls =  $file_modules->getBasename('.php');
+    $date= date(" y - m M -d D h:m:s");
     $code = <<<EOF
 <?php
 /**
@@ -120,7 +121,7 @@ class FactoryPluginObserver extends AbstractFactory{
 *@subpackage plugin
 *@author Andrew Scherbakov
 *@version 1.0
-*@copyright created
+*@copyright created $date
 */
 namespace $nas;
 use packages\\view\\expression\\Expression;

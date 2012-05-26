@@ -77,12 +77,22 @@ class ExtendObserver extends PluginObserver {
 */
 namespace $namesp;
 use $use;
+use packages\models\visitorer\Visitorer;
 class $name extends $parentClass{
-	/**
-	*@todo Укажите файлы шаблонов относительно параметров запроса
-	*@var array
-	*/
-	protected \$templates = array();
+  /**
+  *@todo Укажите файлы шаблонов относительно параметров запроса
+  *@var array
+  */
+  protected \$templates = array();
+  /**
+   * (non-PHPdoc)
+   * @see packages\view\expression.PluginExpression::initialize()
+   */
+  protected function initialize( Visitorer \$controller){
+  /**
+   *@todo здесь общая инициализация
+   */
+  }
 }
 EOF;
         if ( !is_dir($file->getPath()))

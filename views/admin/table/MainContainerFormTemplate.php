@@ -8,6 +8,7 @@
 *@copyright created  2012 - 05 May - 14 Mon
 */
 namespace views\admin\table;
+use packages\models\visitorer\Visitorer;
 use views\admin\MainContainerTemplate;
 class MainContainerFormTemplate extends MainContainerTemplate{
 	/**
@@ -17,4 +18,9 @@ class MainContainerFormTemplate extends MainContainerTemplate{
 	protected $templates = array(
 	  'user' => 'admin/mws/tpl/user/addform.tpl'
 	);
+  /**
+   * (non-PHPdoc)
+   * @see packages\view\expression.PluginExpression::initialize()
+   */
+	protected function initialize( Visitorer $cntr){}
 }
