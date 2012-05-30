@@ -18,9 +18,6 @@ use packages\view\expression\PluginExpression;
 class MainTemplate extends PluginExpression{
   protected $templates = array(
     'admin' => 'admin/mws/admin.tpl',
-    'add' => 'admin/mws/tpl/form/add.tpl',
-    'delete' => 'admin/mws/tpl/form/delete.tpl',
-    'refresh' => 'admin/mws/tpl/form/update.tpl',
     'hello' => 'admin/mws/tpl/hello.tpl'
   );
   /**
@@ -35,7 +32,7 @@ class MainTemplate extends PluginExpression{
    * @param Visitorer $cntr
    */
   public function cache( Visitorer $cntr){
-    $cntr->applicationHelper()->clean();
+    $cntr->applicationHelper->clean();
   }
   /**
    * @param Visitorer $cntr
@@ -48,6 +45,27 @@ class MainTemplate extends PluginExpression{
    * @param Visitorer $cntr
    */
   public function datatable( Visitorer $cntr){
-    print $cntr->datatable();
+    $cntr->datatable();
+  }
+  /**
+   * add form to db
+   * @param Visitorer $cntr
+   */
+  public function add( Visitorer $cntr){
+    $cntr->form('create');
+  }
+  /**
+   * add form to db
+   * @param Visitorer $cntr
+   */
+  public function refresh( Visitorer $cntr){
+    $cntr->form('update');
+  }
+  /**
+   * 
+   * @param Visitorer $cntr
+   */
+  public function delete( Visitorer $cntr){
+    $cntr->form('delete');
   }
 }

@@ -20,6 +20,7 @@
   </div>
 </div>
 <form id="formAddNewRow" class="mws-form" action="#">
+<input type='hidden' name='serializeForm' value='<?= $this->form->toJSON()?>'/>
   <div id="mws-validate-error" class="mws-form-message error" style="display:none;">
   </div>
   <div class="mws-form-inline">

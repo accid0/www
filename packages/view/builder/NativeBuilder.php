@@ -60,6 +60,20 @@ class NativeBuilder extends Visitorer{
    */
   private $__data = array();
   /**
+   * 
+   * Enter description here ...
+   * @var xPDO
+   */
+  private $xpdo = NULL;
+  /**
+   * 
+   * Enter description here ...
+   * @param string $msg
+   */
+  private function log( $msg){
+    $this->xpdo->log( xPDO::LOG_LEVEL_DEBUG, $msg);
+  }
+  /**
    * @return string
    * Enter description here ...
    */
@@ -78,12 +92,12 @@ class NativeBuilder extends Visitorer{
     	"packages\\models\\application\\ApplicationController");
     $this->baseFolder = (string)$this->aC->getPlugin('applicationHelper')->
       application->templateFolder;
+    $this->xpdo = $this->aC->getDbPersistenceFactory()->getxPDO();
   }
   /**
    * 
    * Enter description here ...
    * @param TemplateExpression $exn
-   * @throws Exception
    */
   function visitPluginExpression( Template $exn){
     $this->exn = $exn;
@@ -101,8 +115,7 @@ class NativeBuilder extends Visitorer{
       }
       catch ( Exception $e){
         //ob_end_clean();
-        throw new Exception( "[NativeBuilder::" .  $file . "] " . 
-          $e->getMessage(),$e-> getCode(), $e->getPrevious());
+        $this->log( "[NativeBuilder::" .  $file . "] " . $e->getMessage());
       }
       //$this->tpl = ob_get_clean();
     }
@@ -114,27 +127,36 @@ class NativeBuilder extends Visitorer{
    * @param array $arguments
    */
   public function __call($name, $arguments) {
-    if ( preg_match('@visit[a-zA-Z0-9]++@xs', $name)){
-      $this->visitPluginExpression( $arguments[0]);
-      return;
-    }
-    $plugin = $this->aC->getPlugin( $name);
-    $tpl = $this->exn;
-    $tpl->setDumpResult('name', $name);
-    $arguments []= $tpl;
-    $result = call_user_func_array( array( &$plugin, 'execute'), $arguments);
-    if ( $result instanceof  Expression){
-      $temp = $this->exn;
-      if ( $result->getFileName() != $temp->getFileName()){
-        $tpl->addStorage( $result);
-        $result->visit( $this);
-        print $this->getDumpResult();
+    try{
+      $result = NULL;
+      if ( preg_match('@visit[a-zA-Z0-9]++@xs', $name)){
+        $this->visitPluginExpression( $arguments[0]);
       }
-      else 
-        return $result->expression();
-      $this->exn = $temp;
+      else{
+        $plugin = $this->aC->getPlugin( $name);
+        $tpl = $this->exn;
+        $tpl->setDumpResult('name', $name);
+        $arguments []= $tpl;
+        $result = call_user_func_array( array( &$plugin, 'execute'), $arguments);
+        if ( $result instanceof  Expression){
+          $temp = $this->exn;
+          if ( $result->getFileName() != $temp->getFileName()){
+            $tpl->addStorage( $result);
+            $result->visit( $this);
+            print $this->getDumpResult();
+          }
+          elseif ( $result instanceof  HtmlExpression){
+            print  $result;
+            $result = '';
+          }
+          $this->exn = $temp;
+        }
+      }
     }
-    else return $result;
+    catch ( Expression $e){
+      $this->log("[NativeBuilder::$name] " . $e);
+    }
+    return $result;
   }
   /**
    * 
@@ -150,10 +172,7 @@ class NativeBuilder extends Visitorer{
       $class = new ReflectionClass( $this->exn);
       $class = $class->getShortName();
       $file = $this->exn->getFileName();
-      AbstractFactory::
-        getInstance('packages\\models\\db\\DbPersistenceFactory')
-        ->getxPDO()->log( xPDO::LOG_LEVEL_DEBUG, 
-        "[$class: $file] Поле [$name] не доступно.");
+      $this->log("[$class: $file] Поле [$name] не доступно.");
     }
     return $result;
   }

@@ -2,8 +2,8 @@
 namespace packages\models\db;
 
 use xPDOObject;
-
-class xPDOCollection {
+use Iterator, Exception;
+class xPDOCollection implements Iterator {
   /**
    * 
    * Enter description here ...
@@ -22,6 +22,18 @@ class xPDOCollection {
    * @var string
    */
   private $table;
+  /**
+   * 
+   * Enter description here ...
+   * @var int
+   */
+  private $pointer = 0;
+  /**
+   * 
+   * Enter description here ...
+   * @var boolean
+   */
+  private $initRelated = FALSE;
   /**
    * 
    * Enter description here ...
@@ -45,6 +57,23 @@ class xPDOCollection {
         return TRUE;
     }
     return FALSE;
+  }
+  /**
+   * 
+   * Enter description here ...
+   * @param xPDOObject $data
+   * @param string $key
+   * @return mixed
+   */
+  private function getRelatedObject( xPDOObject $data, $key){
+    $result = $data->$key;
+    if ( empty( $result)){
+      $fk = $data->getFKDefinition( $key);
+      if ($fk['cardinality'] == 'many')
+        $result = $data->getMany( $key);
+      else  $result = $data->getOne( $key);
+    }
+    return $result;
   }
   /**
    * 
@@ -81,8 +110,9 @@ class xPDOCollection {
             break;
           }
         }
-        $this->ensure( $t== '', "Ошибка в графе");
-        $row[]= $this->parse( $data->$t, $t, $columns, $g );
+        $this->ensure( $t== '', "[xPDOCollection::$sTable] Ошибка в графе");
+        $row[]= $this->parse( $this->getRelatedObject($data, $t), $t, $columns,
+          $g );
       }
     }
     if ( count($row) <=1) return $row[0];
@@ -116,13 +146,15 @@ class xPDOCollection {
    * @param string $graph
    * @param array|xPDOObject $data
    */
-  function __construct( $data, $table, $graph =  ''){
+  function __construct( $data, $table, $graph =  '', $ir = FALSE){
     $this->ensure( !is_string($table) || $table ==='', 
     	"[xPDOCollection]: параметр [table] не строка");
     $this->ensure( !is_string($graph) , 
     	"[xPDOCollection]: параметр [graph] не строка");
     $this->table = $table;
     $this->data = $data;
+    reset( $this->data);
+    $this->initRelated = $ir;
     if ( $graph != '') $this->graph =  json_decode( $graph, TRUE);
     else $this->graph = array();
   }
@@ -130,10 +162,49 @@ class xPDOCollection {
    * 
    * Enter description here ...
    * @param array $cols
+   * @return array
    */
   public function columnsToArray( $cols){
     if ( is_string( $cols))
       $cols = explode( ',', $cols );
     return $this->parse($this->data, $this->table, $cols, $this->graph);
+  }
+  /**
+   * 
+   * @return xPDOObject
+   */
+  function current(){
+    return current( $this->data);
+  }
+  /**
+   * @return int
+   */
+  function key(){
+    return key( $this->data);
+  }
+  /**
+   * 
+   */
+  function next(){
+    next( $this->data);
+  }
+  /**
+   * 
+   */
+  function rewind(){
+    reset( $this->data);
+  }
+  /**
+   * @return boolean
+   */
+  function valid( ){
+    return key( $this->data) !== NULL;
+  }
+  /**
+   * @return int
+   * Enter description here ...
+   */
+  function count(){
+    return count( $this->data);
   }
 }

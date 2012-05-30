@@ -41,4 +41,10 @@ class Expression extends CompositeStorage {
 		  ->attach(new IdObserver())
 		  ->attach(new FileInfoObserver($obl));
 	}
+	/**
+	 * @return string
+	 */
+	function __toString(){
+	  return $this->expression();
+	}
 }

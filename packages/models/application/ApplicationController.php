@@ -177,8 +177,7 @@ class ApplicationController extends AbstractFactory {
       @set_error_handler(array(
         "packages\\models\\application\\ApplicationController" , 
         "errorHandler"),E_ALL & ~E_NOTICE & ~E_USER_NOTICE);
-      $tpl = new PluginExpression('' , 
-              AbstractFactory::getInstance(
+      $tpl = new PluginExpression('' , AbstractFactory::getInstance(
               'packages\\view\\factory\\FactoryStorage')->getObject('Null'));
       $tpl = $this->getPlugin('extend')->execute( '', $tpl);
       $b = new NativeBuilder( $tpl);

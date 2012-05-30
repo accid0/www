@@ -11,7 +11,7 @@ namespace views\admin\table;
 use packages\models\visitorer\Visitorer;
 
 use views\admin\MainHeaderTemplate;
-use packages\models\db\ColumnsInfoCollection;
+use packages\models\db\DbForm;
 class MainHeaderTableTemplate extends MainHeaderTemplate{
 	/**
 	*@todo Укажите файлы шаблонов относительно параметров запроса
@@ -23,13 +23,15 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
    * (non-PHPdoc)
    * @see packages\view\expression.PluginExpression::initialize()
    */
-	protected function initialize( Visitorer $cntr){}
+	protected function initialize( Visitorer $cntr){
+      $cntr->title = $cntr->lang['User'];
+	}
 	/**
 	 * @todo query user
 	 * @param Visitorer $controller
 	 */
 	public function user( Visitorer $controller){
-      $controller->data = new ColumnsInfoCollection(array(
+      $data = $controller->form( array(
         'User' => array(
           'НН' => 'userId',
           'Имя' => 'uname',
@@ -40,7 +42,17 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
           )
         )
       ));
-	  $controller->form( $controller->data);
-      $controller->title = $controller->lang['User'];
+      $controller->data = $data;
+      $controller->form = $controller->form( array(
+        'User' => array(
+          'НН' => 'userId',
+          'Имя' => 'uname',
+          'UserRole' => array(
+            'UserGroup' => array(
+              'Роли' => 'groupname'
+            )
+          )
+        )
+      ));
 	}
 }

@@ -28,6 +28,7 @@ use packages\models\observer\Observer;
 
 use packages\view\expression\Expression;
 use packages\models\db\DbPersistenceFactory;
+use packages\view\expression\HtmlExpression;
 use xPDO, xPDOQuery, xPDOObject, ReflectionClass, SplFileInfo, 
   SimpleXMLElement, ArrayObject,xPDOCacheManager, Serializable;
 abstract class  PluginObserver implements Observer , Serializable {
@@ -202,6 +203,16 @@ abstract class  PluginObserver implements Observer , Serializable {
    */
   protected function log($msg){
     $this->getxPDO()->log( xPDO::LOG_LEVEL_DEBUG, $msg);
+  }
+  /**
+   * 
+   * Enter description here ...
+   * @param string $str
+   * @return HtmlExpression
+   */
+  protected function toHtml( $str){
+    return new HtmlExpression( $str, AbstractFactory::getInstance(
+    	'packages\\view\\factory\\FactoryStorage')->getObject('Null'));
   }
   /**
    * @todo serialized data

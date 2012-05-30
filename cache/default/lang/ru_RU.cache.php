@@ -1,7 +1,7 @@
 <?php  return array (
   'tags' => 
   array (
-    'commonApplication' => 1,
+    'commonApplication' => 4,
   ),
   'data' => 
   array (

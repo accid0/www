@@ -119,7 +119,7 @@ class DbPersistenceFactory extends AbstractFactory{
    * @param xPDOQuery $query
    * @return xPDOObject
    */
-  public function getObjectGraph( $table , $graph, xPDOQuery $query){
+  public function getObjectGraph( $table , $graph, xPDOCriteria $query){
     $query->bindGraph( $graph);
     return $this->getxPDO()->getObjectGraph( $table , $graph, $query);
   }
@@ -131,10 +131,11 @@ class DbPersistenceFactory extends AbstractFactory{
    * @param xPDOQuery $query
    * @return array
    */
-  public function getCollectionGraph( $table , $graph, xPDOQuery $query){
+  public function getCollectionGraph( $table , $graph, xPDOCriteria $query,
+    $ir = FALSE){
     $query->bindGraph( $graph);
     return new xPDOCollection( $this->getxPDO()->
-      getCollectionGraph( $table , $graph, $query), $table, $graph);
+      getCollectionGraph( $table , $graph, $query), $table, $graph, $ir);
   }
   /**
    * 
@@ -143,9 +144,9 @@ class DbPersistenceFactory extends AbstractFactory{
    * @param xPDOQuery $query
    * @return array
    */
-  public function getCollection( $table , xPDOQuery $query){
+  public function getCollection( $table , xPDOCriteria $query, $graph = ''){
     return new xPDOCollection( $this->getxPDO()->
-      getCollection( $table , $query), $table);
+      getCollection( $table , $query), $table, $graph);
   }
   /**
    * 
@@ -154,7 +155,7 @@ class DbPersistenceFactory extends AbstractFactory{
    * @param xPDOQuery $query
    * @return int
    */
-  public function getCount( $table, xPDOQuery $query){
+  public function getCount( $table, xPDOCriteria $query){
     return $this->getxPDO()->getCount( $table , $query);
   }
   /**
@@ -164,7 +165,7 @@ class DbPersistenceFactory extends AbstractFactory{
    * @param xPDOQuery $query
    * @return xPDOObject
    */
-  public function getObject( $table , xPDOQuery $query){
+  public function getObject( $table , xPDOCriteria $query){
     return $this->getxPDO()->getObject( $table , $query);
   }
   /**

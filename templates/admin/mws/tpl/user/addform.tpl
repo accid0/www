@@ -1,7 +1,7 @@
 <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->data->Имя]; ?></label>
+      <label><?= $this->lang[(string)$this->form->Имя]; ?></label>
       <div class="mws-form-item large">
-        <input rel='1' type="text" name="<?= $this->data->Имя; ?>" class="mws-textinput required" />
+        <input rel='1' type="text" name="Имя" class="mws-textinput required" />
       </div>
     </div>
     <div class="mws-form-row">
@@ -17,21 +17,19 @@
       </div>
     </div>
     <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->data->НН]; ?></label>
+      <label><?= $this->lang[(string)$this->form->НН]; ?></label>
       <div class="mws-form-item large">
-        <input rel='0' type="text" name="<?= $this->data->НН ?>" class="mws-textinput required digits" />
+        <input rel='0' type="text" name="НН" class="mws-textinput required digits" />
       </div>
     </div>
     <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->data->UserRole->UserGroup->Роли]; ?></label>
-      <div class="mws-form-item large">
-        <select rel='2' class="required" name="<?= $this->data->UserRole->UserGroup->Роли ?>">
-          <option></option>
-          <option>Option 1</option>
-          <option>Option 3</option>
-          <option>Option 4</option>
-          <option>Option 5</option>
+      <label><?= $this->lang[(string)$this->form->Роли]; ?></label>
+      <div class="mws-form-item small">
+        <select rel='2' name= 'Роли[]' multiple="multiple" size="2" class="chzn-select required">
+          <option>Администраторы</option>
+          <option>Гости</option>
         </select>
+        <label for="Роли" class="error" generated="true" style="display:none"></label>
       </div>
     </div>
     <div class="mws-form-row">

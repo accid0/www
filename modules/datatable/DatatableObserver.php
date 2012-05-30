@@ -1,10 +1,14 @@
 <?php
 namespace modules\datatable;
+use packages\models\db\xPDOCollection;
+
+use packages\view\expression\HtmlExpression;
+
 use packages\view\expression\Expression;
 use packages\view\plugins\PluginObserver;
 use packages\view\exception\PluginObserverException;
 use packages\models\observer\Observer;
-use xPDOObject;
+use xPDOObject, xPDOCriteria;
 class DatatableObserver extends PluginObserver {
     /**
     * (non-PHPdoc)
@@ -46,15 +50,14 @@ class DatatableObserver extends PluginObserver {
     	/* Indexed column (used for fast and accurate table cardinality) */
     	$sIndexColumn = $db->newObject( $sTable);
     	$sIndexColumn = $sIndexColumn->getPk();
-    	$query->select( "$sTable.$sIndexColumn, $r->sColumns");
-    	
+    	//$query->select( "$sTable.$sIndexColumn, $r->sColumns");
     	/* 
     	 * Paging
     	 */
     	$sLimit = "";
     	if ( isset( $r->iDisplayStart) && $r->iDisplayStart != '-1' )
     	{
-    	  $query->limit( $r->iDisplayStart, $r->iDisplayLength);
+    	  $query->limit(  $r->iDisplayLength, $r->iDisplayStart);
     	}
     	
     	
@@ -105,8 +108,10 @@ class DatatableObserver extends PluginObserver {
         	$query->where( $sWhere);
     	}
     	
-    	$data = $db->getCollectionGraph( $sTable, $r->graph, $query);
-    	$iFilteredTotal = count( $data);
+        $query->groupby("$sTable.$sIndexColumn");
+    	$query->bindGraph( $r->graph);
+    	$data = $db->getCollection( $sTable, $query, $r->graph);
+    	$iFilteredTotal = $data->count();
     	$query = $db->newQuery($sTable);
     	$iTotal = $db->getCount( $sTable, $query);
     	/*
@@ -120,7 +125,7 @@ class DatatableObserver extends PluginObserver {
       		"aaData" => array()
       	);
     	$output['aaData'] = $data->columnsToArray( $aColumns);
-    	$this->setResult( json_encode( $output ));
+    	$this->setResult( $this->toHtml( json_encode( $output )));
     }
 	
 	
