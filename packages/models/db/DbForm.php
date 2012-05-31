@@ -318,8 +318,27 @@ EOF;
    * @return xPDOObject
    */
   function save(){
-    if ( !is_null( $this->object))
+    if ( !is_null( $this->object)){
+      if ( !$this->object->isNew()){
+        foreach ( $this->object->_relatedObjects as $key => $obj){
+          if ( !empty( $obj)){
+            $fk = $this->object->getFKDefinition( $key);
+            $this->object->_relatedObjects [$key]= array();
+            if ( $fk['cardinality'] == 'many'){
+              $del = $this->object->getMany( $key);
+              foreach ( $del as $d)
+                $d->remove( array($this->table));
+            }
+            elseif ( $fk['cardinality'] == 'one'){
+              $del = $this->object->getOne( $key);
+            $del->remove( array($this->table));
+            }
+            $this->object->_relatedObjects [$key]= $obj;
+          }
+        }
+      }
       $this->object->save();
+    }
     return  $this->object;
   }
   /**
