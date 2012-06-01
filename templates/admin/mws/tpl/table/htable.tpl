@@ -114,20 +114,12 @@ $(document).ready(function() {
         <?= $field->toJSON();?>,
         <?php endforeach;?>
       ],
-      oAddNewRowButtonOptions: {	
-        label: "Добавить...",
-        icons: {primary:'mws-ic-16 ic-add'} 
-      },
-      oDeleteRowButtonOptions: {
-        label: "Удалить...", 
-      icons: {primary:'mws-ic-16 ic-trash red'}
-      },
       oAddNewRowFormOptions: { 	
         title: 'Добавить строку в таблицу',
 	    show: "blind",
 		hide: "explode",
         modal: true, 
-        width: "640"
+        width: "800"
       },
       sAddDeleteToolbarSelector: ".dataTables_length",
       fnShowError : function ( msg, action ) {
@@ -169,5 +161,25 @@ $(document).ready(function() {
       		}
 		}
 	});
+
+  var opts = {
+	cssClass : 'el-rte',
+	height   : 300,
+	lang     : 'en',
+	toolbar  : 'normal',
+	cssfiles : ['<?= $this->applicationHelper->application->templateFolder?>admin/mws/plugins/elrte/css/elrte-inner.css'], 
+	fmAllow: true, 
+	fmOpen : function(callback) {
+		$('<div/>').elfinder({
+			url : 'plugins/elfinder/connectors/php/connector.php', 
+			lang : 'en', 
+			height: 300, 
+			dialog : { width : 640, modal : true, title : 'Select Image' }, 
+			closeOnEditorCallback : true,
+			editorCallback : callback
+		});
+	}
+  }
+  $('#elrte').elrte(opts);
 } );
 </script>

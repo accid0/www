@@ -45,8 +45,11 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
       $controller->data = $data;
       $controller->form = $controller->form( array(
         'User' => array(
-          'НН' => 'userId',
           'Имя' => 'uname',
+          'Фамилия' => 'name',
+          'Почта' => 'email',
+          'www' => 'url',
+          
           'UserRole' => array(
             'UserGroup' => array(
               'Роли' => 'groupname'

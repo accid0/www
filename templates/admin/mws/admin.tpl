@@ -37,7 +37,8 @@
 <link rel="stylesheet" type="text/css" href="plugins/spinner/ui.spinner.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="plugins/timepicker/timepicker.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/jui/jquery.ui.css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="plugins/elrte/css/elrte.full.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="plugins/elfinder/css/elfinder.css" media="screen" />
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="css/mws.theme.css" media="screen" />
 
@@ -46,8 +47,9 @@
 <script type="text/javascript" src="js/jquery.mousewheel-min.js"></script>
 
 <!-- jQuery-UI Dependent Scripts -->
-<script type="text/javascript" src="plugins/editable/complete.js"></script>
-<script type="text/javascript" src="plugins/editable/jquery-ui.js"></script>
+<!-- <script type="text/javascript" src="plugins/editable/complete.js"></script> -->
+<!-- <script type="text/javascript" src="plugins/editable/jquery-ui.js"></script> -->
+<script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="plugins/spinner/ui.spinner.min.js"></script>
 <script type="text/javascript" src="plugins/timepicker/timepicker-min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -71,10 +73,13 @@
 <script type="text/javascript" src="plugins/tipsy/jquery.tipsy-min.js"></script>
 <script type="text/javascript" src="plugins/sourcerer/Sourcerer-1.2-min.js"></script>
 <script type="text/javascript" src="plugins/placeholder/jquery.placeholder-min.js"></script>
-<script type="text/javascript" src="plugins/editable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="plugins/datatables/jquery.dataTables-min.js"></script>
+<!--<script type="text/javascript" src="plugins/editable/jquery.dataTables.min.js"></script> -->
 <script type="text/javascript" src="plugins/editable/jquery.dataTables.editable.js"></script>
 <script type="text/javascript" src="plugins/editable/jquery.jeditable.js"></script>
 <script type="text/javascript" src="plugins/validate/jquery.validate-min.js"></script>
+<script type="text/javascript" src="plugins/elrte/js/elrte.min.js"></script>
+<script type="text/javascript" src="plugins/elfinder/js/elfinder.min.js"></script>
 
 <!-- Core Script -->
 <script type="text/javascript" src="js/mws.js"></script>

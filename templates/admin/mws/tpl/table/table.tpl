@@ -17,6 +17,12 @@
           </tr>
         </tbody>
     </table>
+    <div class="add_delete_toolbar" >
+      <input value='Добавить' type = 'button' id="btnAddNewRow" class='mws-button green large mws-i-24 i-list' />
+      <input value='Изменить' type = 'button' id="btnReadRow" class='mws-button green large mws-i-24 i-pencil-edit' />
+      <input value='Просмотреть' type = 'button' id="btnReadRow" class='mws-button green large mws-i-24 i-preview' />
+      <input value='Удалить' type = 'button' id="btnDeleteRow" class='mws-button red large mws-i-24 i-trashcan-2' />
+    </div>
   </div>
 </div>
 <form id="formAddNewRow" class="mws-form" action="#">

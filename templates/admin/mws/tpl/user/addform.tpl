@@ -5,6 +5,12 @@
       </div>
     </div>
     <div class="mws-form-row">
+      <label>WYSIWYG</label>
+      <div class="mws-form-item">
+        <textarea id="elrte" cols="auto" rows="auto"></textarea>
+      </div>
+    </div>
+    <div class="mws-form-row">
     <label>Email Validation</label>
     <div class="mws-form-item large">
       <input type="text" name="emailField" class="mws-textinput required email" />
