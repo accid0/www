@@ -22,6 +22,8 @@
 <link rel="stylesheet" type="text/css" href="css/icons/32x32.css" media="screen" />
 
 <!-- Demo and Plugin Stylesheets -->
+<link rel="stylesheet" type="text/css" href="plugins/elrte/css/elrte.full.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="plugins/elfinder/css/elfinder.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/demo.css" media="screen" />
 
 <link rel="stylesheet" type="text/css" href="plugins/colorpicker/colorpicker.css" media="screen" />
@@ -37,8 +39,6 @@
 <link rel="stylesheet" type="text/css" href="plugins/spinner/ui.spinner.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="plugins/timepicker/timepicker.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/jui/jquery.ui.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/elrte/css/elrte.full.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/elfinder/css/elfinder.css" media="screen" />
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="css/mws.theme.css" media="screen" />
 
@@ -78,14 +78,14 @@
 <script type="text/javascript" src="plugins/editable/jquery.dataTables.editable.js"></script>
 <script type="text/javascript" src="plugins/editable/jquery.jeditable.js"></script>
 <script type="text/javascript" src="plugins/validate/jquery.validate-min.js"></script>
-<script type="text/javascript" src="plugins/elrte/js/elrte.min.js"></script>
-<script type="text/javascript" src="plugins/elfinder/js/elfinder.min.js"></script>
 
 <!-- Core Script -->
 <script type="text/javascript" src="js/mws.js"></script>
 
 <!-- Themer Script (Remove if not needed) -->
 <script type="text/javascript" src="js/themer.js"></script>
+<script type="text/javascript" src="plugins/elrte/js/elrte.min.js"></script>
+<script type="text/javascript" src="plugins/elfinder/js/elfinder.min.js"></script>
 
 <?php $this->extend(  'header');?>
 

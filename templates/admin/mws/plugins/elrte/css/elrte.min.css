@@ -54,7 +54,7 @@
 .el-select .list div *{padding:0;margin:0;border:0;white-space:nowrap;display:block}
 .el-rte{font-family:Trebuchet MS,Verdana,Geneva,sans-serif;overflow:hidden}
 .el-rte.el-fullscreen{position:absolute;width:99%;top:0;left:0;margin:0;z-index:10}
-.elrte-swf-placeholder{width:1px;background:url('../images/swf.html') 0 0 no-repeat}
+.elrte-swf-placeholder{width:1px;background:url('../images/swf.png') 0 0 no-repeat}
 .elrtetesturl{color:red;background-image:url(../images/pixel.gif)}
 .el-rte .toolbar{background-color:#eee;padding:3px 7px 2px 7px;border:1px solid #ccc;white-space:normal}
 .el-rte-rtl .toolbar{direction:rtl}

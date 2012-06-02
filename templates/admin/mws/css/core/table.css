@@ -38,6 +38,12 @@ table.mws-table
 	border-left:none;
 }
 
+.mws-table tr.even.row_selected td {
+    background-color: #B0BED9;
+}
+.mws-table tr.odd.row_selected td {
+    background-color: #9FAFD1;
+}
 .mws-table tbody tr.odd
 {
 	background-color:#f2f2f2;
@@ -56,6 +62,13 @@ table.mws-table
 .mws-table tbody tr.even td.sorting_1
 {
 	background-color:#e1e1e1;
+}
+
+.mws-table tr.even.row_selected td.sorting_1 {
+    background-color: #B0BED9;
+}
+.mws-table tr.odd.row_selected td.sorting_1 {
+    background-color: #9FAFD1;
 }
 
 
@@ -307,8 +320,4 @@ div.dataTables_wrapper .dataTables_paginate span.paginate_active
 
 .mws-table tr.even.row_selected td {
     background-color: #B0BED9;
-}
-
-.mws-table tr.odd.row_selected td {
-    background-color: #9FAFD1;
 }

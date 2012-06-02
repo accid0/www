@@ -21,6 +21,8 @@
 <link rel="stylesheet" type="text/css" href="css/icons/32x32.css" media="screen" />
 
 <!-- Demo and Plugin Stylesheets -->
+<link rel="stylesheet" type="text/css" href="plugins/elrte/css/elrte.full.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="plugins/elfinder/css/elfinder.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/demo.css" media="screen" />
 
 <link rel="stylesheet" type="text/css" href="plugins/colorpicker/colorpicker.css" media="screen" />
@@ -71,6 +73,8 @@
 <script type="text/javascript" src="plugins/sourcerer/Sourcerer-1.2-min.js"></script>
 <script type="text/javascript" src="plugins/placeholder/jquery.placeholder-min.js"></script>
 <script type="text/javascript" src="plugins/validate/jquery.validate-min.js"></script>
+<script type="text/javascript" src="plugins/elrte/js/elrte.min.js"></script>
+<script type="text/javascript" src="plugins/elfinder/js/elfinder.min.js"></script>
 
 <!-- Core Script -->
 <script type="text/javascript" src="js/mws.js"></script>
@@ -80,6 +84,8 @@
 
 <!-- Demo Scripts (remove if not needed) -->
 <script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript" src="js/demo.formelements.js"></script>
+
 
 <title>MWS Admin - Widgets</title>
 
@@ -754,6 +760,18 @@
                                                 <label for="gender" class="error plain" generated="true" style="display:none"></label>
                                             </div>
                                         </div>
+                                        <div class="mws-form-row">
+
+                                <label>WYSIWYG</label>
+
+                                <div class="mws-form-item">
+
+                                    <textarea id="elrte" cols="auto" rows="auto"></textarea>
+
+                                </div>
+
+                            </div>
+                                        
                                     </div>
                                 </form>
                             </div>

@@ -8,7 +8,7 @@ use packages\view\expression\Expression;
 use packages\view\plugins\PluginObserver;
 use packages\view\exception\PluginObserverException;
 use packages\models\observer\Observer;
-use xPDOObject, xPDOCriteria;
+use xPDOObject, xPDOCriteria, PDO;
 class DatatableObserver extends PluginObserver {
     /**
     * (non-PHPdoc)
@@ -50,17 +50,6 @@ class DatatableObserver extends PluginObserver {
     	/* Indexed column (used for fast and accurate table cardinality) */
     	$sIndexColumn = $db->newObject( $sTable);
     	$sIndexColumn = $sIndexColumn->getPk();
-    	//$query->select( "$sTable.$sIndexColumn, $r->sColumns");
-    	/* 
-    	 * Paging
-    	 */
-    	$sLimit = "";
-    	if ( isset( $r->iDisplayStart) && $r->iDisplayStart != '-1' )
-    	{
-    	  $query->limit(  $r->iDisplayLength, $r->iDisplayStart);
-    	}
-    	
-    	
     	/*
     	 * Ordering
     	 */
@@ -110,8 +99,27 @@ class DatatableObserver extends PluginObserver {
     	
         $query->groupby("$sTable.$sIndexColumn");
     	$query->bindGraph( $r->graph);
+        //$query->select( "$sTable.$sIndexColumn, $r->sColumns");
+    	/* 
+    	 * Paging
+    	 */
+    	$sLimit = "";
+    	if ( isset( $r->iDisplayStart) && $r->iDisplayStart != '-1' )
+    	{
+    	  $query->limit(  $r->iDisplayLength, $r->iDisplayStart);
+    	}
+    	$query->prepare();
+    	$sql = $query->toSql();
+    	$sql = str_replace('SELECT', 'SELECT SQL_CALC_FOUND_ROWS', 
+    	  $sql);
+    	$query = $db->newCriteria( $sql, $r->graph);
     	$data = $db->getCollection( $sTable, $query, $r->graph);
-    	$iFilteredTotal = $data->count();
+    	$query = $db->newCriteria('SELECT FOUND_ROWS() as cnt');
+    	$query->prepare();
+    	$query->stmt->execute();
+    	
+	    $iFilteredTotal = $query->stmt->fetch( PDO::FETCH_ASSOC);
+	    $iFilteredTotal = $iFilteredTotal['cnt'];
     	$query = $db->newQuery($sTable);
     	$iTotal = $db->getCount( $sTable, $query);
     	/*

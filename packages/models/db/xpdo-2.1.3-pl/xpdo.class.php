@@ -2336,7 +2336,7 @@ class xPDOCriteria {
      */
     public function bind($bindings= array (), $byValue= true, $cacheFlag= false) {
         if (!empty ($bindings)) {
-            $this->bindings= array_merge($this->bindings, $bindings);
+            $this->bindings= array_merge((array)$this->bindings, (array)$bindings);
         }
         if (is_object($this->stmt) && $this->stmt && !empty ($this->bindings)) {
             reset($this->bindings);

@@ -251,7 +251,7 @@ a { outline: none; }
 
 .elrte-swf-placeholder {
 	width:1px;
-	background: url('../images/swf.html') 0 0 no-repeat;	
+	background: url('../images/swf.png') 0 0 no-repeat;	
 }
 
 /* style to detect images url */

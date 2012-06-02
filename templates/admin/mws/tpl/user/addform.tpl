@@ -7,7 +7,7 @@
     <div class="mws-form-row">
       <label>WYSIWYG</label>
       <div class="mws-form-item">
-        <textarea id="elrte" cols="auto" rows="auto"></textarea>
+        <textarea class="elrte" name='elrte' cols="auto" rows="auto"></textarea>
       </div>
     </div>
     <div class="mws-form-row">

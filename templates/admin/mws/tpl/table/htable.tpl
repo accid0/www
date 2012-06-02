@@ -75,7 +75,7 @@ $(document).ready(function() {
   
 	var oTable = $('.mws-datatable-fn').dataTable( {
       //bJQueryUI: true,
-      "sPaginationType": "full_numbers",
+      //"sPaginationType": "full_numbers",
       "bProcessing": true,
       "bServerSide": true,
       "sAjaxSource": "<?= $this->url( 'datatable');?>",
@@ -116,10 +116,12 @@ $(document).ready(function() {
       ],
       oAddNewRowFormOptions: { 	
         title: 'Добавить строку в таблицу',
-	    show: "blind",
 		hide: "explode",
         modal: true, 
-        width: "800"
+        width: "900",
+        create: function(event, ui) {
+         $('.elrte', this).elrte(opts);
+        }
       },
       sAddDeleteToolbarSelector: ".dataTables_length",
       fnShowError : function ( msg, action ) {
@@ -129,14 +131,19 @@ $(document).ready(function() {
           
       },
       fnOnDeleting: function( tr, id)
-		{ 	
-            var key = this.aoColumns[0].name;
-            this.oDeleteParameters = {
-                    serializeForm : '<?= $this->data->toJSON();?>'
-            };
-            this.oDeleteParameters[key] = id;
-			return true;
-		}
+	  { 	
+         var key = this.aoColumns[0].name;
+         this.oDeleteParameters = {
+          serializeForm : '<?= $this->data->toJSON();?>'
+         };
+         this.oDeleteParameters[key] = id;
+		 return true;
+	 },
+     fnOnAdding: function(){
+         var form = $( '#' + this.sAddNewRowFormId);
+         $('.elrte', form).elrte('updateSource');
+         return true;
+     }
 	});
   
 	$("#formAddNewRow").validate({
@@ -164,15 +171,15 @@ $(document).ready(function() {
 
   var opts = {
 	cssClass : 'el-rte',
-	height   : 300,
-	lang     : 'en',
-	toolbar  : 'normal',
+	height   : 150,
+	lang     : 'ru',
+	toolbar  : 'maxi',
 	cssfiles : ['<?= $this->applicationHelper->application->templateFolder?>admin/mws/plugins/elrte/css/elrte-inner.css'], 
 	fmAllow: true, 
 	fmOpen : function(callback) {
 		$('<div/>').elfinder({
 			url : 'plugins/elfinder/connectors/php/connector.php', 
-			lang : 'en', 
+			lang : 'ru', 
 			height: 300, 
 			dialog : { width : 640, modal : true, title : 'Select Image' }, 
 			closeOnEditorCallback : true,
@@ -180,6 +187,5 @@ $(document).ready(function() {
 		});
 	}
   }
-  $('#elrte').elrte(opts);
 } );
 </script>

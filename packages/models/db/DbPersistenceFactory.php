@@ -179,6 +179,14 @@ class DbPersistenceFactory extends AbstractFactory{
     return $query;
   }
   /**
+   * 
+   * @return xPDOCriteria
+   */
+  public function newCriteria( $sql = '', $graph = ''){
+    $criteria = new xPDOCriteria( $this->getxPDO(), $sql, $graph);
+    return $criteria;
+  }
+  /**
    * @return xPDOCacheManager
    * Enter description here ...
    */
