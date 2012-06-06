@@ -45,14 +45,35 @@ class MainHeaderTableTemplate extends MainHeaderTemplate{
       $controller->data = $data;
       $controller->form = $controller->form( array(
         'User' => array(
-          'Имя' => 'uname',
-          'Фамилия' => 'name',
-          'Почта' => 'email',
+          'логин' => 'uname',
+          'имя' => 'name',
+          'почта' => 'email',
           'www' => 'url',
-          
+          'аватар' => 'user_avatar',
+          'регистрация' => 'user_regdate',
+          'откуда' => 'user_from',
+          'интересы' => 'user_interests',
+          'рождение' => 'user_birthday',
+          'пароль' => 'pass',
+          'показыватьИмейл' => 'user_viewemail',
+          'инкогнито' => 'invisible',
+          'информировать' => 'recieve_newsletter',
+          'страна' => 'country',
+          'персональность' => 'person',
+          'телефон' => 'phone',
+          'мобильный' => 'phone_mobile',
+          'факс' => 'fax',
+          'фамилия' => 'lastname',
+          'zip' => 'zip',
+          'улица' => 'street',
+          'паблик' => 'show_public',
+          'компания' => 'company',
+          'аська' => 'user_icq',
+          'аим' => 'user_aim',
+          'скайп' => 'user_skype',
           'UserRole' => array(
             'UserGroup' => array(
-              'Роли' => 'groupname'
+              'роли' => 'groupname'
             )
           )
         )

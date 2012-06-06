@@ -1,41 +1,69 @@
 <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->form->Имя]; ?></label>
+      <label><?= $this->lang[(string)$this->form->логин]; ?></label>
       <div class="mws-form-item large">
-        <input rel='1' type="text" name="Имя" class="mws-textinput required" />
+        <input rel='1' type="text" name="логин" class="mws-textinput required" />
       </div>
     </div>
     <div class="mws-form-row">
-      <label>WYSIWYG</label>
+      <label><?= $this->lang[(string)$this->form->имя]; ?></label>
+      <div class="mws-form-item large">
+        <input type="text" name="имя" class="mws-textinput required" />
+      </div>
+    </div>
+    <div class="mws-form-row">
+      <label><?= $this->lang[(string)$this->form->фамилия]; ?></label>
+      <div class="mws-form-item large">
+        <input type="text" name="фамилия" class="mws-textinput required" />
+      </div>
+    </div>
+    <div class="mws-form-row">
+      <label><?= $this->lang[(string)$this->form->интересы]; ?></label>
       <div class="mws-form-item">
-        <textarea class="elrte" name='elrte' cols="auto" rows="auto"></textarea>
+        <textarea class="elrte" name='интересы' cols="auto" rows="5"></textarea>
       </div>
     </div>
     <div class="mws-form-row">
-    <label>Email Validation</label>
+      <label><?= $this->lang[(string)$this->form->рождение]; ?></label>
+      <div class="mws-form-item">
+        <input type='text' readonly="readonly" class="mws-textinput mws-datepicker-wk required date" name='рождение' />
+      </div>
+    </div>
+    <div class="mws-form-row">
+    <label><?= $this->lang[(string)$this->form->почта]; ?></label>
     <div class="mws-form-item large">
-      <input type="text" name="emailField" class="mws-textinput required email" />
+      <input type="text" name="почта" class="mws-textinput required email" />
     </div>
     </div>
     <div class="mws-form-row">
-      <label>URL Validation</label>
+      <label><?= $this->lang[(string)$this->form->показыватьИмейл]; ?></label>
       <div class="mws-form-item large">
-        <input type="text" name="urlField" class="mws-textinput required url" />
+        <ul class="mws-form-list">
+          <li><input id="email_yes" type="radio" name="показыватьИмейл" class="required" /> <label for="email_yes">да</label></li>
+          <li><input id="email_no" type="radio" name="показыватьИмейл" /> <label for="email_no">нет</label></li>
+        </ul>
+        <label for="gender" class="error plain" generated="true" style="display:none"></label>
       </div>
     </div>
     <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->form->НН]; ?></label>
+      <label><?= $this->lang[(string)$this->form->www]; ?></label>
       <div class="mws-form-item large">
-        <input rel='0' type="text" name="НН" class="mws-textinput required digits" />
+        <input type="text" name="www" class="mws-textinput required url" />
       </div>
     </div>
     <div class="mws-form-row">
-      <label><?= $this->lang[(string)$this->form->Роли]; ?></label>
+      <label><?= $this->lang[(string)$this->form->рождение]; ?></label>
+      <div class="mws-form-item large">
+        <input rel='0' type="text" name="рождение" class="mws-textinput required digits" />
+      </div>
+    </div>
+    <div class="mws-form-row">
+      <label><?= $this->lang[(string)$this->form->роли]; ?></label>
       <div class="mws-form-item small">
-        <select rel='2' name= 'Роли[]' multiple="multiple" size="2" class="chzn-select required">
+        <select rel='2' name= 'роли[]' multiple="multiple" size="2" class="chzn-select required">
           <option>Администраторы</option>
           <option>Гости</option>
         </select>
-        <label for="Роли" class="error" generated="true" style="display:none"></label>
+        <label for="роли[]" class="error" generated="true" style="display:none"></label>
       </div>
     </div>
     <div class="mws-form-row">

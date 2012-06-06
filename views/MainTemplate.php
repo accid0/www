@@ -26,13 +26,13 @@ class MainTemplate extends PluginExpression{
    */
   protected function initialize( Visitorer $cntr){
     $cntr->lang = $cntr->lang(NULL);
-    $cntr->applicationHelper = $cntr->applicationHelper();
+    $cntr->helper = $cntr->helper();
   }
   /**
    * @param Visitorer $cntr
    */
   public function cache( Visitorer $cntr){
-    $cntr->applicationHelper->clean();
+    $cntr->helper->clean();
   }
   /**
    * @param Visitorer $cntr

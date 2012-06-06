@@ -16,7 +16,7 @@ class UrlObserver extends PluginObserver {
 	 * @param Expression $subject
 	 */
 	protected function doExecute( $query, Expression $subject){
-	  $this->setResult( $this->getPlugin('applicationHelper')->application->baseurl . 
+	  $this->setResult( $this->getPlugin('helper')->application->baseurl . 
 	  	"/index.php?q=$query");
     }
 	/**

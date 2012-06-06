@@ -114,7 +114,7 @@ class ApplicationController extends AbstractFactory {
           xPDO::LOG_LEVEL_DEBUG, $msg);
         $appController->getPlugin('registry')->errorMsg = '404 не найдено' ;
       }
-      $a_H = $appController->getPlugin( 'applicationHelper');
+      $a_H = $appController->getPlugin( 'helper');
       //$errorPage = file_get_contents($a_H->templateFolder . 
       // $a_H->errorPage);
       $tpl = new PluginExpression($errorPage , 

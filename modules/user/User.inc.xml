@@ -137,14 +137,104 @@
             <locale name="ru_RU" value="№"></locale>
             <locale name="en_EN" value="ID"></locale></expression>
         <expression id="User.uname">
-            <locale name="ru_RU" value="Ф.И.О."></locale>
-            <locale name="en_EN" value="Names"></locale></expression>
+            <locale name="ru_RU" value="Логин"></locale>
+            <locale name="en_EN" value="Login"></locale></expression>
         <expression id="UserGroup.groupname">
             <locale name="ru_RU" value="Роли"></locale>
             <locale name="en_EN" value="Rolls"></locale></expression>
         <expression id="User.email">
-            <locale name="ru_RU" value="Почта"></locale>
+            <locale name="ru_RU" value="Электронная почта"></locale>
             <locale name="en_EN" value="Email"></locale></expression>
+        <expression id="User.name">
+            <locale name="ru_RU" value="Имя"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="User.url">
+            <locale name="ru_RU" value="Домашняя страница"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_avatar">
+            <locale name="ru_RU" value="Аватара"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_regdate">
+            <locale name="ru_RU" value="Дата регистрации"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_from">
+            <locale name="ru_RU" value="Откуда вы пришли?"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_interests">
+            <locale name="ru_RU" value="Интересы"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_birthday">
+            <locale name="ru_RU" value="Дата рождения"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.pass">
+            <locale name="ru_RU" value="Пароль"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_viewemail">
+            <locale name="ru_RU" value="Контактный почтовый адресс"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.invisible">
+            <locale name="ru_RU" value="Невидимый пользователь"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.receive_newsletter">
+            <locale name="ru_RU" value="Получать почтовые сообщения"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.country">
+            <locale name="ru_RU" value="Страна"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.person">
+            <locale name="ru_RU" value="Обращение"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.phone">
+            <locale name="ru_RU" value="Телефон"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.phone_mobile">
+            <locale name="ru_RU" value="Мобильный телефон"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.fax">
+            <locale name="ru_RU" value="Факс"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.lastname">
+            <locale name="ru_RU" value="Фамилия"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.zip">
+            <locale name="ru_RU" value="ZIP код"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.street">
+            <locale name="ru_RU" value="Улица"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.show_public">
+            <locale name="ru_RU" value="Показывать всем"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.company">
+            <locale name="ru_RU" value="Компания"></locale>
+            <locale name="en_EN" value=""></locale></expression>
+        <expression id="User.user_icq">
+            <locale name="ru_RU" value="ICQ"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="User.user_aim">
+            <locale name="ru_RU" value="AIM"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="User.user_skype">
+            <locale name="ru_RU" value="SKYPE"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
+        <expression id="">
+            <locale name="ru_RU" value="Пользователи"></locale>
+            <locale name="en_EN" value="Users"></locale></expression>
         <expression id="">
             <locale name="ru_RU" value="Пользователи"></locale>
             <locale name="en_EN" value="Users"></locale></expression>

@@ -90,7 +90,7 @@ abstract class  PluginObserver implements Observer , Serializable {
    */
   protected function access(ApplicationHelperIterator $node){
     $access = array();
-    $aH = $this->getPlugin('applicationHelper');
+    $aH = $this->getPlugin('helper');
     $authPlugin = (string)$aH->application->authPlugin;
     if ( $authPlugin == '') {
       $this->access = TRUE;
@@ -265,12 +265,12 @@ abstract class  PluginObserver implements Observer , Serializable {
 	  $classname = $class->getShortName();
 	  $path = str_replace( "\\", "/", $class->getNamespaceName());
 	  $this->name = str_replace( "Observer", "", $classname);
-	  if ( $this->name === 'ApplicationHelper'){
+	  if ( $this->name === 'Helper'){
 	    $aH = new ApplicationHelper();
 	    $this->setResult( $aH);
 	  }
 	  else
-    	$aH = $this->getPlugin('applicationHelper');
+    	$aH = $this->getPlugin('helper');
 	  if ( $path === 'packages/view/plugins/system'){
 	    $this->system =TRUE;
 	    $name = $this->name;

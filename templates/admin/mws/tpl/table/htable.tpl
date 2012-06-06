@@ -62,8 +62,9 @@ $.editable.addInputType("multiselect", {
     	}
     }
 });
+    
 $(document).ready(function() {
-  
+    
 	var opts = {
 			's1': {decimals:2},
 			's2': {stepping: 0.25},
@@ -72,7 +73,13 @@ $(document).ready(function() {
 		};
     for (var n in opts)
 		$("#"+n).spinner();
-  
+    $(".mws-datepicker-wk").datepicker({
+        showOtherMonths:true, 
+        showWeek:true,
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "c-50:c+10"
+    });
 	var oTable = $('.mws-datatable-fn').dataTable( {
       //bJQueryUI: true,
       //"sPaginationType": "full_numbers",
@@ -120,6 +127,24 @@ $(document).ready(function() {
         modal: true, 
         width: "900",
         create: function(event, ui) {
+          var opts = {
+        	    cssClass : 'el-rte',
+        	    height   : 150,
+        	    lang     : 'ru',
+        	    toolbar  : 'maxi',
+        	    cssfiles : ['<?= $this->helper->application->templateFolder?>admin/mws/plugins/elrte/css/elrte-inner.css'], 
+        	    fmAllow: true, 
+        	    fmOpen : function(callback) {
+        	      $('<div/>').elfinder({
+        	        url : 'plugins/elfinder/connectors/php/connector.php', 
+        	        lang : 'ru', 
+        	        height: 300, 
+        	        dialog : { width : 640, modal : true, title : 'Select Image' }, 
+        	        closeOnEditorCallback : true,
+        	        editorCallback : callback
+        	      });
+        	    }
+        	};
          $('.elrte', this).elrte(opts);
         }
       },
@@ -168,24 +193,7 @@ $(document).ready(function() {
       		}
 		}
 	});
+	
 
-  var opts = {
-	cssClass : 'el-rte',
-	height   : 150,
-	lang     : 'ru',
-	toolbar  : 'maxi',
-	cssfiles : ['<?= $this->applicationHelper->application->templateFolder?>admin/mws/plugins/elrte/css/elrte-inner.css'], 
-	fmAllow: true, 
-	fmOpen : function(callback) {
-		$('<div/>').elfinder({
-			url : 'plugins/elfinder/connectors/php/connector.php', 
-			lang : 'ru', 
-			height: 300, 
-			dialog : { width : 640, modal : true, title : 'Select Image' }, 
-			closeOnEditorCallback : true,
-			editorCallback : callback
-		});
-	}
-  }
 } );
 </script>

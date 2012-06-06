@@ -31,8 +31,7 @@ class FactoryPluginObserver extends AbstractFactory{
   private function getPath(){
     if ( $this->path === ''){
       $this->path = (string)$this->getPlugin( self::_SYSTEM_PATH . 
-      	'ApplicationHelperObserver', 'applicationHelper')->application
-        ->pluginFolder;
+      	'HelperObserver', 'helper')->application->pluginFolder;
     }
     return $this->path;
   }
@@ -68,9 +67,9 @@ class FactoryPluginObserver extends AbstractFactory{
       	"[FactoryPluginObserver]: Плагин не может быть пустой строкой [$str]");
     if ($str == 'Null')
       $str = 'packages\\models\\observer\\NullObserver';
-    if ( $str === 'applicationHelper')
+    if ( $str === 'helper')
       return $this->getPlugin(self::_SYSTEM_PATH . 
-      	'ApplicationHelperObserver',  'applicationHelper');
+      	'HelperObserver',  'helper');
     $registry = $this->getPlugin( self::_SYSTEM_PATH . 
     	'RegistryObserver', 'registry');
     if ( $str === 'registry' || isset( $registry->$str))
@@ -110,7 +109,7 @@ class FactoryPluginObserver extends AbstractFactory{
       }
     }
     $fs = $file_modules->openFile('a');
-    $nas = str_replace('/','\\',$pathp);
+    $nas = str_replace('/',"\\",$pathp);
     $cls =  $file_modules->getBasename('.php');
     $date= date(" y - m M -d D h:m:s");
     $code = <<<EOF

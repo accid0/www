@@ -17,7 +17,8 @@ class MainHeaderTemplate extends MainTemplate{
 	*@var array
 	*/
 	protected $templates = array(
-	  'table' => 'admin/mws/tpl/table/htable.tpl'
+	  'table' => 'admin/mws/tpl/table/htable.tpl',
+	  'modules' => 'admin/mws/tpl/modules/scripts.tpl'
 	);
   /**
    * (non-PHPdoc)

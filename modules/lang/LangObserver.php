@@ -29,7 +29,7 @@ class LangObserver extends PluginObserver {
 	$lang = $cache->get( "lang/$locale");
 	if ( !$lang){
 	  $ar = array();
-      $lang = $this->getPlugin('applicationHelper')->findTree( 'lang')->
+      $lang = $this->getPlugin('helper')->findTree( 'lang')->
         findTree('expression');
       foreach ( $lang as $l)
         if ( $l['id'] != ''){

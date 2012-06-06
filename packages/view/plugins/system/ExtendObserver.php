@@ -125,7 +125,7 @@ EOF;
     $req = $this->getPlugin('request');
     $this->commands = explode("/" , $req->q);
     $this->total = count( $this->commands);
-    $ah = $this->getPlugin('applicationHelper')->application;
+    $ah = $this->getPlugin('helper')->application;
     $this->viewsFolder = $ah->viewsFolder;
   }
 	/**

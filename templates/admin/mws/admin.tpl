@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<base href = '<?= $this->applicationHelper->application->templateFolder;?>admin/mws/'' />
+<base href = '<?= $this->helper->application->templateFolder;?>admin/mws/'' />
 
 <!-- Apple iOS and Android stuff (do not remove) -->
 <meta name="apple-mobile-web-app-capable" content="no" />

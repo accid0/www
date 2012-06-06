@@ -20,7 +20,7 @@ use packages\view\expression\TemplateExpression;
 
 use packages\models\visitorer\Visitorer;
 
-use packages\view\plugins\system\ApplicationHelperObserver;
+use packages\view\plugins\system\HelperObserver;
 
 use packages\models\application\ApplicationController;
 
@@ -90,7 +90,7 @@ class NativeBuilder extends Visitorer{
     $this->exn = $exn;
     $this->aC =AbstractFactory::getInstance(
     	"packages\\models\\application\\ApplicationController");
-    $this->baseFolder = (string)$this->aC->getPlugin('applicationHelper')->
+    $this->baseFolder = (string)$this->aC->getPlugin('helper')->
       application->templateFolder;
     $this->xpdo = $this->aC->getDbPersistenceFactory()->getxPDO();
   }
@@ -133,6 +133,8 @@ class NativeBuilder extends Visitorer{
         $this->visitPluginExpression( $arguments[0]);
       }
       else{
+        $name = preg_replace("/((?=[A-Z]))/xs", "/\\1", $name);
+        $name = strtolower( $name);
         $plugin = $this->aC->getPlugin( $name);
         $tpl = $this->exn;
         $tpl->setDumpResult('name', $name);
